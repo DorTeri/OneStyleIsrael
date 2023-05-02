@@ -4,6 +4,7 @@ import { userService } from '../services/user.service'
 import { eventBus } from '../services/event-bus.service'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, signup } from '../store/actions/user.actions'
+import { getSvg } from '../services/svg.service'
 export function Login({ adminLogin }) {
 
     const user = useSelector((storeState) => storeState.userModule.loggedInUser)
@@ -40,17 +41,29 @@ export function Login({ adminLogin }) {
     return (
         <>
             <section className='login'>
-                <h2>Admin login</h2>
+                <div className='login-header flex align-center space-between'>
+                <h2>Join us</h2>
+                <span
+                    onClick={() => closeModal()}
+                    className="close-icon"
+                    dangerouslySetInnerHTML={{
+                        __html: getSvg('x'),
+                    }}
+                ></span>
+                </div>
+                <div className='titles-container flex align-center'>
+                    <h2 className={`sign-in ${isLogin ? 'active' : ''}`} onClick={() => setIsLogin(true)}>SIGN IN</h2>
+                    <h2 className={`sign-up ${!isLogin ? 'active' : ''}`} onClick={() => setIsLogin(false)}>I'M NEW HERE</h2>
+                </div>
                 <form onSubmit={submit}>
                     {!isLogin && <><label htmlFor="accountName">Name</label>
                         <input value={accountName} onChange={handleChange} type="text" name="accountName" id="accountName" placeholder='Air Jordan' /></>}
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email">Email address</label>
                     <input value={email} onChange={handleChange} type="email" name="email" id="email" placeholder='example@gmail.com' />
-                    <label htmlFor="password">password</label>
+                    <label htmlFor="password">Password</label>
                     <input value={password} onChange={handleChange} type="password" name="password" id="password" placeholder='*******' />
                     <button>{isLogin ? 'Login' : 'Signup'}</button>
                 </form>
-                <button onClick={() => closeModal()}>Back</button>
             </section>
             <div className='modal-background'></div>
         </>

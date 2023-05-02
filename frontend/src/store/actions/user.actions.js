@@ -1,6 +1,6 @@
 import { eventBus, showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { userService } from "../../services/user.service"
-import { SET_USER , SET_ADMIN  } from "../reducers/user.reducer"
+import { SET_USER } from "../reducers/user.reducer"
 
 export function addToCart(product) {
     return async (dispatch, getState) => {
@@ -44,7 +44,7 @@ export function login(userCred) {
     return async (dispatch, getState) => {
         try {
             const user = await userService.login(userCred)
-            if(user) dispatch({ type: SET_ADMIN, user})
+            if(user) dispatch({ type: SET_USER, user})
             return user
         } catch (error) {
             console.log('error:', error)

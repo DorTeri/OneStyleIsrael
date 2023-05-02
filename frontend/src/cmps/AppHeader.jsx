@@ -35,7 +35,6 @@ export function AppHeader() {
   }
 
   function getCartCount() {
-    console.log(user);
     if(!user) return ''
     else if (user.cart.length) return user.cart.length
   }
