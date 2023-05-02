@@ -1,0 +1,35 @@
+.list-wrapper {
+
+    h3 {
+        text-align: center;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 35%;
+            height: 1px;
+            background-color: black;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            width: 35%;
+            height: 1px;
+            background-color: black;
+        }
+    }
+
+    .products-list {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+    }
+}

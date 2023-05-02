@@ -1,0 +1,29 @@
+.admin-list {
+    display: grid;
+
+    .admin-product-preview {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 0.5fr;
+
+        img {
+            width: 100px;
+            aspect-ratio: auto;
+        }
+
+        h4 {
+            place-self: center;
+        }
+
+        .actions {
+
+            span {
+                cursor: pointer;
+                margin-inline: 10px;
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}

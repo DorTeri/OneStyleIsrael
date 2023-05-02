@@ -1,0 +1,81 @@
+.cart-section {
+
+
+    .cart-header {
+        font-family: poppins-medium;
+        padding: 20px 0;
+        width: 100%;
+        box-shadow: rgb(229, 229, 229) 0px 0px 0px 0px inset, rgb(229, 229, 229) 0px 0px 0px 0px inset, rgb(229, 229, 229) 0px -1px 0px 0px inset, rgb(229, 229, 229) 0px 0px 0px 0px inset;
+    }
+
+    .cart-content {
+        display: grid;
+        width: 100%;
+
+        // > :first-child {
+        //     box-shadow: rgb(229, 229, 229) 0px 1px 0px 0px inset;
+        // }
+
+        >* {
+            box-shadow: rgb(229, 229, 229) 0px 0px 0px 0px inset, rgb(229, 229, 229) 0px 0px 0px 0px inset, rgb(229, 229, 229) 0px -1px 0px 0px inset, rgb(229, 229, 229) 0px 0px 0px 0px inset;
+        }
+    }
+
+    .cart-summary {
+        display: grid;
+
+        >:first-child {
+            padding-bottom: 10px;
+            font-family: poppins-medium;
+        }
+
+        >*:not(:first-child) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .total {
+            padding-top: 20px;
+            font-weight: bold;
+        }
+
+        .checkout {
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            font-family: poppins-medium;
+            background-color: rgb(31, 31, 31);
+            color: #fff;
+            place-content: center;
+            transition: .3s;
+            
+            &:hover {
+                opacity: .8;
+            }
+        }
+    }
+
+    .recommended-section {
+        margin-top: 50px;
+        margin-bottom: 20px;
+
+        .recommended-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+
+            .recommended-preview {
+                mix-blend-mode: multiply;
+
+                img {
+                    width: 100%;
+                    padding: 5px;
+                    border-radius: 3px;
+                }
+            }
+        }
+    }
+}

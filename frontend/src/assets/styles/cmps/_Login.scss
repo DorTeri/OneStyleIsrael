@@ -1,0 +1,32 @@
+.login {
+    padding-top: 20px;
+    height: 60vh;
+
+    form {
+        display: grid;
+
+        label {
+            padding-top: 10px;
+            padding-bottom: 4px;
+        }
+
+        input {
+            width: 30%;
+        }
+
+        button {
+            border: none;
+            background-color: rgb(34, 34, 34);
+            border-radius: 6px;
+            color: #fff;
+            padding: 5px;
+            margin-top: 20px;
+            width: 30%;
+            transition: .2s;
+
+            &:hover {
+                opacity: .8;
+            }
+        }
+    }
+}

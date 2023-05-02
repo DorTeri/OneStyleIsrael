@@ -1,0 +1,30 @@
+.app-footer {
+    padding: 30px;
+    background-color: rgb(34, 34, 34);
+    color: #fff;
+
+    .follow {
+
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-inline: 5px;
+            width: 32px;
+            height: 32px;
+            background-color: #7e7e7e;
+            border-radius: 50%;
+            transition: .3s;
+            svg {
+                width: 24px;
+                height: 24px;
+                fill: #000;
+            }
+
+            &:hover {
+                background-color: #fff;
+            }
+        }
+    }
+}

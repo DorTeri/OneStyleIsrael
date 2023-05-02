@@ -1,0 +1,52 @@
+.expand {
+    display: none;
+    width: 170px;
+    height: fit-content;
+    background-color: #fff;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    translate: -50%;
+    animation: drop .2s;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    > * {
+        animation: opacity-delay .2s;
+        display: block;
+        padding: 10px;
+
+        &:hover {
+            background-color: #f5f5f5;
+        }
+    }
+}
+
+@keyframes drop {
+    0% {
+        height: 30px;
+    }
+
+    25% {
+        height: 60px;
+    }
+
+    50% {
+        height: 70px;
+    }
+
+    100% {
+        height: fit-content;
+    }
+}
+
+@keyframes opacity-delay {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 1;
+    }
+}

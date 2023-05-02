@@ -1,0 +1,28 @@
+.product-edit {
+    
+    height: 80vh;
+
+    .form-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        gap: 20px;
+
+        img {
+            width: 200px;
+            aspect-ratio: auto;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+
+            > * {
+                margin-bottom: 4px;
+            }
+        }
+
+        @include for-tablet-layout {
+            grid-template-columns: 1fr;
+        }
+    }
+}

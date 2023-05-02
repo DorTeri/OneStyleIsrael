@@ -1,0 +1,30 @@
+.products-page {
+
+
+    button {
+        font-size: 1.1em;
+        width: 100px;
+        height: 34px;
+        background-color: inherit;
+        border: 1px solid #CACACB;
+        border-radius: 555px;
+        padding-inline: 12px;
+
+        span {
+            font-family: poppins-medium;
+        }
+
+        .filter-icon {
+            width: 100%;
+            padding-top: 8.5px;
+            svg {
+                height: 26px;
+                width: 24px;
+            }
+        }
+
+        &:hover {
+            border: 1px solid #000;
+        }
+    }
+}
