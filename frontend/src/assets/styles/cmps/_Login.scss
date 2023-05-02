@@ -1,6 +1,10 @@
 .login {
-    padding-top: 20px;
-    height: 60vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 1000;
+    background-color: #fff;
 
     form {
         display: grid;
@@ -29,4 +33,14 @@
             }
         }
     }
+}
+
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }

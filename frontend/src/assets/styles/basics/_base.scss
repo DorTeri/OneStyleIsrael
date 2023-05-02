@@ -15,6 +15,10 @@ body {
   min-height: 100vh;
   color: $mainColor;
   font-family: poppins-light;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
 }
 
 // img {

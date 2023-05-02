@@ -6,6 +6,7 @@ import { getSvg } from '../services/svg.service'
 import { NavScreen } from './NavScreen'
 import { HeaderExpand } from './HeaderExpand'
 import { productService } from '../services/product.service'
+import { eventBus } from '../services/event-bus.service'
 
 export function AppHeader() {
   const navigate = useNavigate()
@@ -15,7 +16,7 @@ export function AppHeader() {
   const brands = useSelector((storeState) => storeState.productsModule.brands)
 
   const [showInput, setShowInput] = useState(false)
-  const [showScreen, setShowScreen] = useState(false)  
+  const [showScreen, setShowScreen] = useState(false)
 
   function onNavClick(path) {
     const filterBy = {
@@ -24,7 +25,7 @@ export function AppHeader() {
     dispatch(setFilterBy(filterBy))
     navigate(`/${path}`)
   }
-  
+
   function onSearchClick() {
     setShowInput(true)
   }
@@ -65,24 +66,33 @@ export function AppHeader() {
             ONE STYLE ISRAEL
           </h1>
           <div className="header-icons flex align-center">
-            <NavLink>
             <div className="icon-container">
               <span
-                className="star-icon"
+                onClick={() => eventBus.emit('show-login')}
+                className="user-icon"
                 dangerouslySetInnerHTML={{
-                  __html: getSvg('star'),
+                  __html: getSvg('user'),
                 }}
               />
+            </div>
+            <NavLink>
+              <div className="icon-container">
+                <span
+                  className="star-icon"
+                  dangerouslySetInnerHTML={{
+                    __html: getSvg('star'),
+                  }}
+                />
               </div>
-              </NavLink>
+            </NavLink>
             <NavLink to='/cart'>
               <div className="icon-container cart">
-              <span
-              className="cart-icon"
-              dangerouslySetInnerHTML={{
-                __html: getSvg('cart'),
-              }}
-              /><span className='cart-count'>{getCartCount()}</span>
+                <span
+                  className="cart-icon"
+                  dangerouslySetInnerHTML={{
+                    __html: getSvg('cart'),
+                  }}
+                /><span className='cart-count'>{getCartCount()}</span>
               </div>
 
             </NavLink>
@@ -95,16 +105,16 @@ export function AppHeader() {
                 <span className="featured">New & Featured</span>
               </NavLink>
               <NavLink to='/adidas'>Adidas
-              <HeaderExpand ctgs={brands['adidas']} brand={'adidas'}/>
+                <HeaderExpand ctgs={brands['adidas']} brand={'adidas'} />
               </NavLink>
               <NavLink to='/nike'>Nike
-              <HeaderExpand ctgs={brands['nike']} brand={'nike'}/>
+                <HeaderExpand ctgs={brands['nike']} brand={'nike'} />
               </NavLink>
               <NavLink to='/jordan'>Jordan
-              <HeaderExpand ctgs={brands['jordan']} brand={'jordan'}/>
+                <HeaderExpand ctgs={brands['jordan']} brand={'jordan'} />
               </NavLink>
               <NavLink to='/new balance'>New Balance
-              <HeaderExpand ctgs={brands['new balance']} brand={'new balance'}/>
+                <HeaderExpand ctgs={brands['new balance']} brand={'new balance'} />
               </NavLink>
             </nav>
           )}
