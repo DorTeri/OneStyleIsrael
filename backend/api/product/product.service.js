@@ -4,14 +4,9 @@ const utilService = require('../../services/util.service')
 const ObjectId = require('mongodb').ObjectId
 
 async function query(filterBy) {
-    if(!filterBy.minPrice) filterBy.minPrice = -Infinity
-    if(!filterBy.maxPrice) filterBy.minPrice = Infinity
     try {
         const collection = await dbService.getCollection('product')
-        if (filterBy.brand) {
-            var products = await collection.find({ brand: filterBy.brand, price: { $gte: filterBy.minPrice, $lte: filterBy.maxPrice }}).toArray()
-            products = _filterProducts(products, filterBy)
-        }
+        if (filterBy.brand) var products = await collection.find({ brand: filterBy.brand }).toArray()
         else {
             var productsArr = await collection.aggregate([
                 {
