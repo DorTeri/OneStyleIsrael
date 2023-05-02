@@ -1,3 +1,4 @@
+import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { productService } from "../../services/product.service"
 import { SET_BRANDS, REMOVE_PRODUCT, ADD_PRODUCT, SET_PRODUCTS, UPDATE_PRODUCT, SET_FILTER_BY } from "../reducers/products.reducer"
 
@@ -43,8 +44,10 @@ export function removeProduct(productId) {
             await productService.deleteProduct(productId)
             const action = { type: REMOVE_PRODUCT, productId }
             dispatch(action)
+            showSuccessMsg(`Removed successfully`)
             return 'Removed!'
         } catch (error) {
+            showErrorMsg(`Something went wrong`)
             console.log('error:', error)
         }
     }
@@ -57,8 +60,10 @@ export function saveProduct(product) {
             const newProduct = await productService.saveProduct(product)
             const action = { type, product: newProduct }
             dispatch(action)
+            showSuccessMsg(`product ${type}ed successfully`)
             return 'Removed!'
         } catch (error) {
+            showErrorMsg(`Something went wrong`)
             console.log('error:', error)
         }
     }

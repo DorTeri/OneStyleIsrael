@@ -14,6 +14,7 @@ import { ProductEdit } from './views/ProductEdit';
 import { CtgPage } from './views/CtgPage';
 import { AppFooter } from './cmps/AppFooter';
 import { loadBrands } from './store/actions/products.actions';
+import { UserMsg } from './cmps/UserMsg';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
   return (
     <Router>
       <section className="main-app main-layout">
+        <UserMsg />
         <AppHeader />
         <section className='main-content'>
           <Routes>

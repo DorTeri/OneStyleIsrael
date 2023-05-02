@@ -1,3 +1,4 @@
+import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { userService } from "../../services/user.service"
 import { SET_USER , SET_ADMIN  } from "../reducers/user.reducer"
 
@@ -17,7 +18,9 @@ export function removeFromCart(productId , productSize) {
         try {
             const user = userService.removeFromCart(productId , productSize)
             dispatch({ type: SET_USER, user})
+            showSuccessMsg(`Product removed successfully`)
         } catch (error) {
+            showErrorMsg(`Something went wrong`)
             console.log('error:', error)
         }
     }

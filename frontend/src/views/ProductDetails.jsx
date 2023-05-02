@@ -7,6 +7,7 @@ import { addToCart } from '../store/actions/user.actions'
 import { utilService } from '../services/util.service'
 import { loadProducts } from '../store/actions/products.actions'
 import { Loader } from '../cmps/Loader'
+import { showSuccessMsg } from '../services/event-bus.service'
 
 export function ProductDetails() {
 
@@ -62,7 +63,7 @@ export function ProductDetails() {
     function onAddToCart() {
         if(!cartProduct) return
         dispatch(addToCart(cartProduct))
-        window.bus.publish("alert", {type:"success", message: "Your submission has been saved!"});
+        showSuccessMsg(`Added to cart successfully`)
     }
 
     if (!product || !products) return <Loader />
