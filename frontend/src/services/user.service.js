@@ -14,15 +14,9 @@ function getUser() {
     return JSON.parse(localStorage.getItem('user'))
 }
 
-function signup(name) {
-    const user = getUser() ||
-    {
-        name,
-        password: '123',
-        cart: []
-    }
-    updateUser(user)
-    return user
+function signup(userCred) {
+    userCred.cart = getUser().cart
+    return httpService.post('auth/signup', userCred)
 }
 
 function addToCart(product) {
@@ -56,6 +50,7 @@ async function login(userCred) {
 
 function getEmptyCred() {
     return {
+        accountName: '',
         email: '',
         password: ''
     }

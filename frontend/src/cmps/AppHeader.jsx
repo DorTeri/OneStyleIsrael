@@ -35,11 +35,11 @@ export function AppHeader() {
   }
 
   function getCartCount() {
-    if (user.cart.length) return user.cart.length
-    return ''
+    console.log(user);
+    if(!user) return ''
+    else if (user.cart.length) return user.cart.length
   }
 
-  if (!user) return <div>Loading...</div>
   return (
     <>
       <div className="new-sale full">מבצעים חדשים נחתו באתר</div>
@@ -68,7 +68,7 @@ export function AppHeader() {
           <div className="header-icons flex align-center">
             <div className="icon-container">
               <span
-                onClick={() => eventBus.emit('show-login')}
+                onClick={() => eventBus.emit('show-login' , false)}
                 className="user-icon"
                 dangerouslySetInnerHTML={{
                   __html: getSvg('user'),

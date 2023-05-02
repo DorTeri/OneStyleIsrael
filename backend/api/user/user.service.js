@@ -108,7 +108,10 @@ async function add(user) {
         const userToAdd = {
             accountName: user.accountName,
             password: user.password,
-            email:user.email
+            email:user.email,
+            cart: user.cart,
+            favorites: [],
+            orders: []
         }
         console.log('user to add addddddddddd',userToAdd)
         const collection = await dbService.getCollection('user')

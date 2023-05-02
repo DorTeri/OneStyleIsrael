@@ -1,4 +1,4 @@
-import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
+import { eventBus, showErrorMsg, showSuccessMsg } from "../../services/event-bus.service"
 import { userService } from "../../services/user.service"
 import { SET_USER , SET_ADMIN  } from "../reducers/user.reducer"
 
@@ -26,12 +26,15 @@ export function removeFromCart(productId , productSize) {
     }
 }
 
-export function signup(name) {
+export function signup(userCred) {
     return async (dispatch, getState) => {
         try {
-            const user = userService.signup(name)
+            const user = await userService.signup(userCred)
             dispatch({ type: SET_USER, user})
+            showSuccessMsg('Signed up seccessfully')
+            return user
         } catch (error) {
+            showErrorMsg('Something went wrong')
             console.log('error:', error)
         }
     }

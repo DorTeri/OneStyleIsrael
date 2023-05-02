@@ -22,7 +22,6 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(signup('Dor'))
     dispatch(loadBrands())
   }, [])
 
