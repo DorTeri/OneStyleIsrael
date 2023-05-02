@@ -29,19 +29,35 @@
       .cart-count {
         font-size: 11px;
         position: absolute;
-        top: 20%;
-        left: 6.5%;
+        top: 38%;
+        left: 30.5%;
       }
     }
-
-    .cart-icon {
-      margin-right: 100px;
-      cursor: pointer;
-
-    }
-
-    .star-icon {
-      cursor: pointer;
+    .icon-container {
+      height: 40px;
+      width: 40px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      &.cart {
+        margin-right: 20px;
+      }
+      &:hover {
+        background-color: #f5f5f5;
+      }
+      .cart-icon {
+        // margin-right: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        
+      }
+      
+      .star-icon {
+        padding-top: 5px;
+        cursor: pointer;
+      }
     }
   }
 

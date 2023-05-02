@@ -66,18 +66,26 @@ export function AppHeader() {
           </h1>
           <div className="header-icons flex align-center">
             <NavLink>
+            <div className="icon-container">
               <span
                 className="star-icon"
                 dangerouslySetInnerHTML={{
                   __html: getSvg('star'),
                 }}
-              /></NavLink>
-            <NavLink to='/cart'><span
+              />
+              </div>
+              </NavLink>
+            <NavLink to='/cart'>
+              <div className="icon-container cart">
+              <span
               className="cart-icon"
               dangerouslySetInnerHTML={{
                 __html: getSvg('cart'),
               }}
-            /><span className='cart-count'>{getCartCount()}</span></NavLink>
+              /><span className='cart-count'>{getCartCount()}</span>
+              </div>
+
+            </NavLink>
           </div>
         </section>
         <div className="header-nav flex align-center justify-center">
