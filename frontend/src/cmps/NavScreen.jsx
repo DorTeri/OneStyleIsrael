@@ -3,10 +3,16 @@ import { NavLink } from 'react-router-dom'
 import { getSvg } from '../services/svg.service'
 import { useSelector } from 'react-redux'
 import { HeaderExpand } from './HeaderExpand'
+import { eventBus } from '../services/event-bus.service'
 
 export function NavScreen({ showScreen, setShowScreen }) {
 
     const brands = useSelector((storeState) => storeState.productsModule.brands)
+
+    function openLogin(isLogin) {
+        eventBus.emit('show-login' , isLogin)
+        setShowScreen(false)
+    }
 
     return (
         <section className={`nav-screen ${showScreen ? 'open' : ''}`}>
@@ -41,6 +47,15 @@ export function NavScreen({ showScreen, setShowScreen }) {
                         Sale
                     </NavLink>
                 </nav>
+                <div className='login-section'>
+                    <h2>MY ACCOUNT</h2>
+                    <button className='sign-in' onClick={() => openLogin(true)}>
+                        Sign in
+                    </button>
+                    <button className='register' onClick={() => openLogin(false)}>
+                        Register
+                    </button>
+                </div>
             </div>
             <div className='black-screen' onClick={() => setShowScreen(!showScreen)}>
 

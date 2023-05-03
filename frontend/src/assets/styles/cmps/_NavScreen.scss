@@ -31,7 +31,6 @@
             > * {
                 position: relative;
                 padding: 10px;
-                padding-inline: 10px;
                 text-decoration: none;
 
                 &:hover {
@@ -48,6 +47,37 @@
                     left: 100%;
                     translate: 0%;
                 }
+            }
+        }
+
+        .login-section {
+            margin-top: 15px;
+            display: grid;
+            gap: 15px;
+            padding: 10px;
+
+            h2 {
+                font-size: 1rem;
+            }
+
+            button {
+                height: 44px;
+                transition: .2s;
+                background-color: #fff;
+                color: #000;
+                font-family: poppins-medium;
+                font-size: 1rem;
+                border-radius: 6px;
+                border-width: 1px;
+
+                &:hover {
+                    opacity: .6;
+                }
+            }
+
+            .sign-in {
+                background-color: #000;
+                color: #fff;
             }
         }
     }
