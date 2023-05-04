@@ -1,11 +1,13 @@
 import React from 'react'
 import { useForm } from '../customHooks/useForm'
 import { userService } from '../services/user.service'
+import { PaymentHeader } from '../cmps/PaymentHeader';
+import { CheckoutPreview } from '../cmps/CheckoutPreview';
+import { useSelector } from 'react-redux';
 
 export function ShippingAdress() {
 
-    console.log('here');
-
+    const user = useSelector((storeState) => storeState.userModule.loggedInUser)
     const [userContact, handleChange, setUserContact, handleSubmit, errors] = useForm(
         userService.getEmptyContact(),
         submit,
@@ -19,6 +21,7 @@ export function ShippingAdress() {
     const { firstName, lastName, address, city, postal, phone } = userContact
     return (
         <section className='shipping-address'>
+            <PaymentHeader />
             <h1>Add you delivery address</h1>
             <h4>* Require fields</h4>
             <form>
@@ -47,6 +50,7 @@ export function ShippingAdress() {
                     <input value={phone} onChange={handleChange} type="text" name="phone" id="phone" />
                 </div>
             </form>
+            {user.cart.map(p => <CheckoutPreview product={p}/>)}
         </section>
     )
 }

@@ -53,10 +53,12 @@ export function Login() {
             errors.password = "Password must be at least 8 characters long";
         }
 
-        if (!fields.accountName) {
-            errors.accountName = "Name is required"
-        } else if (!/^[a-zA-Z_]+$/.test(fields.accountName)) {
-            errors.accountName = "Name is invalid , only characters";
+        if (!isLogin) {
+            if (!fields.accountName) {
+                errors.accountName = "Name is required"
+            } else if (!/^[a-zA-Z_]+$/.test(fields.accountName)) {
+                errors.accountName = "Name is invalid , only characters";
+            }
         }
 
         return errors;

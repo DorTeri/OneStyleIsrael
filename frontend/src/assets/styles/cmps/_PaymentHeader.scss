@@ -1,0 +1,25 @@
+.payment-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    padding: 24px 0;
+    color: #B6B6B6;
+    font-size: rem(16px);
+    font-family: poppins-medium;
+
+
+    .bar {
+        height: 4px;
+        width: 100%;
+        border-radius: 555px;
+        background-color: #B6B6B6;
+    }
+
+    .active {
+        color: #000;
+
+        .bar {
+            background-color: #000;
+        }
+    }
+}
