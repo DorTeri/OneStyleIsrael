@@ -12,7 +12,7 @@ router.get('/', log, getProducts)
 router.get('/:id', getProductById)
 router.post('/', addProduct)
 router.put('/:id', updateProduct)
-router.delete('/:id', removeProduct)
+router.delete('/:id', requireAdmin, removeProduct)
 // router.delete('/:id', requireAuth, requireAdmin, removeProduct)
 
 

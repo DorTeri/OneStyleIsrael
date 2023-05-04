@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useEffectUpdate } from "./useEffectUpdate";
 
-export function useForm(initialFields, cb = () => { }) {
+export function useForm(initialFields, cb = () => { }, validate = () => ({})) {
     const [fields, setFields] = useState(initialFields)
+    const [errors, setErrors] = useState({});
 
-    useEffectUpdate(() => {
-        cb(fields)
-    }, [fields])
+    // useEffectUpdate(() => {
+    //     setErrors(validate(fields));
+    // }, [fields]);
 
     function handleChange({ target }) {
         const field = target.name
@@ -29,10 +30,22 @@ export function useForm(initialFields, cb = () => { }) {
         setFields((prevFields) => ({ ...prevFields, [field]: value }))
     }
 
+    function handleSubmit(ev) {
+        ev.preventDefault();
+        const validationErrors = validate(fields);
+        setErrors(validationErrors);
+        if (Object.keys(validationErrors).length === 0) {
+            cb(fields);
+        }
+    }
+
+
     return [
         fields,
         handleChange,
-        setFields
+        setFields,
+        handleSubmit,
+        errors
     ]
 
 }

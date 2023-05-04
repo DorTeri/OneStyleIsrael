@@ -27,6 +27,7 @@ export function removeFromCart(productId , productSize) {
 }
 
 export function signup(userCred) {
+    console.log('signup')
     return async (dispatch, getState) => {
         try {
             const user = await userService.signup(userCred)

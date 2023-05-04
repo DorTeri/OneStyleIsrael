@@ -16,6 +16,7 @@ import { AppFooter } from './cmps/AppFooter';
 import { loadBrands } from './store/actions/products.actions';
 import { UserMsg } from './cmps/UserMsg';
 import { Login } from './cmps/Login';
+import { UserDetails } from './views/UserDetails';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
             <Route path="/details/:id" element={<ProductDetails />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/edit/:id?" element={<ProductEdit />} />
+            <Route path="/user/:id" element={<UserDetails />} />
           </Routes>
         </section>
         <AppFooter />

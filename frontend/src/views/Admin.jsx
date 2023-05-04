@@ -12,7 +12,7 @@ export function Admin() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const admin = useSelector((storeState) => storeState.userModule.admin)
+    const user = useSelector((storeState) => storeState.userModule.loggedInUser)
     const products = useSelector((storeState) => storeState.productsModule.products)
     const filterBy = useSelector((storeState) => storeState.productsModule.filterBy)
 
@@ -21,22 +21,12 @@ export function Admin() {
     }
 
     useEffect(() => {
-        dispatch(setFilterBy({...filterBy , brand: ''}))
+        if(!user || !user.isAdmin) return navigate('/')
+        dispatch(setFilterBy({...filterBy , brand: 'all'}))
         dispatch(loadProducts())
-        console.log(products);
     } , [])
 
-    function adminLogin(userCred) {
-        try {
-            const user = dispatch(login(userCred))
-            if(!user) navigate('/')
-        } catch(err) {
-            console.log('doLogin' , err);
-        }
-    }
-
-
-    if(!admin || !Array.isArray(products)) return <Login adminLogin={adminLogin}/>
+    if(!user || !user.isAdmin || !Array.isArray(products)) return
     return (
         <section className='admin-section'>
             <h1>Admin Actions</h1>

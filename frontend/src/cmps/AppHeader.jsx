@@ -35,8 +35,13 @@ export function AppHeader() {
   }
 
   function getCartCount() {
-    if(!user) return ''
+    if (!user) return ''
     else if (user.cart.length) return user.cart.length
+  }
+
+  function openUserLogin() {
+    if (user) navigate(`user/${user._id}`)
+    eventBus.emit('show-login', false)
   }
 
   return (
@@ -67,7 +72,7 @@ export function AppHeader() {
           <div className="header-icons flex align-center">
             <div className="icon-container">
               <span
-                onClick={() => eventBus.emit('show-login' , false)}
+                onClick={() => openUserLogin()}
                 className="user-icon"
                 dangerouslySetInnerHTML={{
                   __html: getSvg('user'),

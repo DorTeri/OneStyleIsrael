@@ -6,7 +6,8 @@ const ObjectId = require('mongodb').ObjectId
 async function query(filterBy) {
     try {
         const collection = await dbService.getCollection('product')
-        if (filterBy.brand) var products = await collection.find({ brand: filterBy.brand }).toArray()
+        if(filterBy.brand === 'all') var products = await collection.find().toArray()
+        else if (filterBy.brand) var products = await collection.find({ brand: filterBy.brand }).toArray()
         else {
             var productsArr = await collection.aggregate([
                 {
