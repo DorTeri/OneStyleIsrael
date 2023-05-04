@@ -1,0 +1,16 @@
+.checkout-preview {
+
+    img {
+        aspect-ratio: auto;
+        width: 4%;
+
+        @include for-tablet-layout {
+            width: 11%;
+        }
+    }
+
+    span {
+        color: #000;
+        font-size: rem(16px);
+    }
+}

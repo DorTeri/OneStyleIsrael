@@ -8,7 +8,8 @@ export const userService = {
     removeFromCart,
     login,
     getEmptyCred,
-    getEmptyContact
+    getEmptyContact,
+    updateUser
 }
 
 function getUser() {
@@ -20,10 +21,14 @@ function signup(userCred) {
     return httpService.post('auth/signup', userCred)
 }
 
+function updateUser(user) {
+    return httpService.put(`user/${user._id}`, user)
+}
+
 function addToCart(product) {
     const user = getUser()
     user.cart.unshift(product)
-    updateUser(user)
+    updateLocalUser(user)
     return user
 }
 
@@ -31,11 +36,11 @@ function removeFromCart(productId, productSize) {
     const user = getUser()
     const idx = user.cart.findIndex(p => p._id === productId && p.size === productSize)
     user.cart.splice(idx, 1)
-    updateUser(user)
+    updateLocalUser(user)
     return user
 }
 
-function updateUser(user) {
+function updateLocalUser(user) {
     localStorage.setItem('user', JSON.stringify(user))
 }
 
@@ -61,7 +66,6 @@ function getEmptyContact() {
     return {
         firstName: '',
         lastName: '',
-        country: '',
         address: '',
         city: '',
         postal: '',

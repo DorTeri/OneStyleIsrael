@@ -16,6 +16,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 10px;
+        margin-bottom: 20px;
 
         >* {
             grid-column: 1 / -1;
@@ -43,6 +44,66 @@
 
         >*:not(button) {
             display: grid;
+        }
+    }
+
+    .summary {
+        padding: 24px 0;
+        border-top: 0.1rem solid #e6e6e6;
+
+        h2 {
+            font-size: rem(22px);
+        }
+
+        .delivery {
+            padding: 10px 0;
+            border-bottom: 0.1rem solid #e6e6e6;
+            margin-bottom: 10px;
+        }
+
+        .total {
+            color: #222222;
+            font-family: poppins-medium;
+        }
+    }
+
+    .btn-submit {
+        margin-bottom: 70px;
+        height: 44px;
+        width: 320px;
+        background-color: #222;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-family: poppins-medium;
+        font-size: rem(16px);
+        transition: .2s;
+
+        >:first-child {
+            width: 100%;
+        }
+
+        >:nth-child(2) {
+            width: 1%;
+            translate: -1000%;
+            transition: .1s;
+        }
+
+        span {
+            height: 25px;
+
+            svg {
+                height: 25px;
+                fill: #fff;
+            }
+        }
+
+        &:hover {
+            opacity: .7;
+
+            >:nth-child(2) {
+                translate: -900%;
+            }
         }
     }
 }

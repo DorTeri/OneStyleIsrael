@@ -12,7 +12,6 @@ export function PaymentHeader() {
     }, [path.pathname])
 
     function setPath() {
-        console.log('path', path)
         switch (path.pathname) {
             case '/shippingAddress':
                 setCurrPath('shipping')

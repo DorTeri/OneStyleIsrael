@@ -84,15 +84,19 @@ async function remove(userId) {
 
 async function update(user) {
     try {
+        console.log('user', user)
         // peek only updatable properties
         const userToSave = {
             _id: ObjectId(user._id), // needed for the returnd obj
-            fullname: user.fullname,
-            accountName:user.accountName,
-            email:user.email
+            accountName: user.accountName,
+            password: user.password,
+            email:user.email,
+            cart: user.cart,
+            favorites: user.favorites,
+            orders: user.orders,
+            isAdmin: user.isAdmin,
+            contact: user.contact
         }
-        console.log('user',user)
-        console.log('userToSave',userToSave)
         const collection = await dbService.getCollection('user')
         await collection.updateOne({ _id: userToSave._id }, { $set: userToSave })
         return userToSave
@@ -114,7 +118,6 @@ async function add(user) {
             orders: [],
             isAdmin: false
         }
-        console.log('user to add addddddddddd',userToAdd)
         const collection = await dbService.getCollection('user')
         await collection.insertOne(userToAdd)
         return userToAdd

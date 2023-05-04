@@ -4,7 +4,7 @@ export function CheckoutPreview({ product }) {
     return (
         <article className='checkout-preview flex align-center space-between'>
             <img src={product.url1} />
-            <h4>{product.price}</h4>
+            <span>&#8362;{product.price}.00</span>
         </article>
     )
 }
