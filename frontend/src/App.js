@@ -17,6 +17,7 @@ import { loadBrands } from './store/actions/products.actions';
 import { UserMsg } from './cmps/UserMsg';
 import { Login } from './cmps/Login';
 import { UserDetails } from './views/UserDetails';
+import { ShippingAdress } from './views/ShippingAdress';
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
             <Route path="/admin" element={<Admin />} />
             <Route path="/edit/:id?" element={<ProductEdit />} />
             <Route path="/user/:id" element={<UserDetails />} />
+            <Route path="/shippingAddress" element={<ShippingAdress />} />
           </Routes>
         </section>
         <AppFooter />

@@ -1,0 +1,48 @@
+.shipping-address {
+
+    h1 {
+        font-size: rem(22px);
+        color: #000;
+        margin-bottom: 20px;
+    }
+
+    h4 {
+        font-size: rem(14px);
+        color: #222222;
+        margin-bottom: 12px;
+    }
+
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+
+        >* {
+            grid-column: 1 / -1;
+
+            input {
+                @include input;
+                border-color: rgba(34, 34, 34, .25);
+            }
+
+            label {
+                line-height: rem(18px);
+                color: #000;
+                font-size: rem(14px);
+                padding-bottom: 4px;
+            }
+        }
+
+        >:first-child {
+            grid-column: 1;
+        }
+
+        >:nth-child(2) {
+            grid-column: 2;
+        }
+
+        >*:not(button) {
+            display: grid;
+        }
+    }
+}

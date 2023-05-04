@@ -7,7 +7,8 @@ export const userService = {
     addToCart,
     removeFromCart,
     login,
-    getEmptyCred
+    getEmptyCred,
+    getEmptyContact
 }
 
 function getUser() {
@@ -53,6 +54,18 @@ function getEmptyCred() {
         accountName: '',
         email: '',
         password: ''
+    }
+}
+
+function getEmptyContact() {
+    return {
+        firstName: '',
+        lastName: '',
+        country: '',
+        address: '',
+        city: '',
+        postal: '',
+        phone: '',
     }
 }
 
