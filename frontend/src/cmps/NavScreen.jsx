@@ -7,10 +7,11 @@ import { eventBus } from '../services/event-bus.service'
 
 export function NavScreen({ showScreen, setShowScreen }) {
 
+    const user = useSelector((storeState) => storeState.userModule.loggedInUser)
     const brands = useSelector((storeState) => storeState.productsModule.brands)
 
     function openLogin(isLogin) {
-        eventBus.emit('show-login' , isLogin)
+        eventBus.emit('show-login', isLogin)
         setShowScreen(false)
     }
 
@@ -28,33 +29,73 @@ export function NavScreen({ showScreen, setShowScreen }) {
                     />
                 </div>
                 <nav className="header-links">
-                    <NavLink to='/'>
+                    <NavLink to='/' className='flex align-center space-between'>
                         <span className="featured">New & Featured</span>
+                        <span className='arrow-icon'
+                            dangerouslySetInnerHTML={{
+                                __html: getSvg('arrowRight'),
+                            }}>
+                        </span>
                     </NavLink>
-                    <NavLink to='/adidas'>Adidas
-                    <HeaderExpand ctgs={brands['adidas']} brand={'adidas'}/>
+                    <NavLink to='/adidas' className='flex align-center space-between'>Adidas
+                        <span className='arrow-icon'
+                            dangerouslySetInnerHTML={{
+                                __html: getSvg('arrowRight'),
+                            }}>
+                        </span>
+                        <HeaderExpand ctgs={brands['adidas']} brand={'adidas'} />
+                    </NavLink >
+                    <NavLink to='/nike' className='flex align-center space-between'>Nike
+                        <span className='arrow-icon'
+                            dangerouslySetInnerHTML={{
+                                __html: getSvg('arrowRight'),
+                            }}>
+                        </span>
+                        <HeaderExpand ctgs={brands['nike']} brand={'nike'} />
                     </NavLink>
-                    <NavLink to='/nike'>Nike
-                    <HeaderExpand ctgs={brands['nike']} brand={'nike'}/>
+                    <NavLink to='/jordan' className='flex align-center space-between'>Jordan
+                        <span className='arrow-icon'
+                            dangerouslySetInnerHTML={{
+                                __html: getSvg('arrowRight'),
+                            }}>
+                        </span>
+                        <HeaderExpand ctgs={brands['jordan']} brand={'jordan'} />
                     </NavLink>
-                    <NavLink to='/jordan'>Jordan
-                    <HeaderExpand ctgs={brands['jordan']} brand={'jordan'}/>
-                    </NavLink>
-                    <NavLink to='/new balance'>New Balance
-                    <HeaderExpand ctgs={brands['new balance']} brand={'new balance'}/>
-                    </NavLink>
-                    <NavLink to='/sale' className="sale">
-                        Sale
+                    <NavLink to='/new balance' className='flex align-center space-between'>New Balance
+                        <span className='arrow-icon'
+                            dangerouslySetInnerHTML={{
+                                __html: getSvg('arrowRight'),
+                            }}>
+                        </span>
+                        <HeaderExpand ctgs={brands['new balance']} brand={'new balance'} />
                     </NavLink>
                 </nav>
                 <div className='login-section'>
                     <h2>MY ACCOUNT</h2>
-                    <button className='sign-in' onClick={() => openLogin(true)}>
+                    {!user && <button className='sign-in' onClick={() => openLogin(true)}>
                         Sign in
-                    </button>
-                    <button className='register' onClick={() => openLogin(false)}>
+                    </button>}
+                    {!user && <button className='register' onClick={() => openLogin(false)}>
                         Register
-                    </button>
+                    </button>}
+                    {user && <div className='flex align-center space-between'>
+                        <div>
+                            <span className="user-icon"
+                                dangerouslySetInnerHTML={{
+                                    __html: getSvg('user'),
+                                }}>
+                            </span>
+                            <span>
+                                {user.accountName}
+                            </span>
+                        </div>
+                        <span className='arrow-icon'
+                            dangerouslySetInnerHTML={{
+                                __html: getSvg('arrowRight'),
+                            }}>
+                        </span>
+                    </div>
+                    }
                 </div>
             </div>
             <div className='black-screen' onClick={() => setShowScreen(!showScreen)}>

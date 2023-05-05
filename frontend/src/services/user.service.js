@@ -3,22 +3,31 @@ import { httpService } from "./http.service"
 export const userService = {
     getUser,
     signup,
-    lastMoves,
     addToCart,
     removeFromCart,
     login,
     getEmptyCred,
     getEmptyContact,
-    updateUser
+    updateUser,
+    logout
 }
 
 function getUser() {
     return JSON.parse(localStorage.getItem('user'))
 }
 
+async function login(userCred) {
+    const user = await httpService.post('auth/login', userCred)
+    return user
+}
+
 function signup(userCred) {
     userCred.cart = getUser().cart
     return httpService.post('auth/signup', userCred)
+}
+
+function logout() {
+    return httpService.post(`auth/logout`)
 }
 
 function updateUser(user) {
@@ -44,15 +53,10 @@ function updateLocalUser(user) {
     localStorage.setItem('user', JSON.stringify(user))
 }
 
-function lastMoves(moves, id) {
-    if (!id) return moves.splice(moves.length - 4)
-    else return moves.filter(move => move.toId === id)
-}
-
-async function login(userCred) {
-    const user = await httpService.post('auth/login', userCred)
-    return user
-}
+// function lastMoves(moves, id) {
+//     if (!id) return moves.splice(moves.length - 4)
+//     else return moves.filter(move => move.toId === id)
+// }
 
 function getEmptyCred() {
     return {
