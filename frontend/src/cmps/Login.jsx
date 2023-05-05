@@ -5,15 +5,26 @@ import { eventBus } from '../services/event-bus.service'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, signup } from '../store/actions/user.actions'
 import { getSvg } from '../services/svg.service'
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios'
+
 export function Login() {
 
     const user = useSelector((storeState) => storeState.userModule.loggedInUser)
+
     const [userCred, handleChange, setUserCred, handleSubmit, errors] = useForm(
         userService.getEmptyCred(),
         submit,
         validate
     )
 
+    // google login API
+    const googleLogin = useGoogleLogin({
+        onSuccess: (codeResponse) => setGoogleUser(codeResponse),
+        onError: (error) => console.log('Login Failed:', error)
+    });
+
+    const [googleUser, setGoogleUser] = useState(null)
     const [showLogin, setShowLogin] = useState(false)
     const [isLogin, setIsLogin] = useState(false)
 
@@ -33,9 +44,48 @@ export function Login() {
         if (user) closeModal()
     }, [user])
 
-    function submit() {
-        if (isLogin) dispatch(login(userCred))
-        else dispatch(signup(userCred))
+
+    // Watching if the googleUser changed so we can fetch the data.
+    useEffect(() => {
+        async function googleFetch() {
+            if (googleUser) {
+                try {
+                    const res = await axios
+                        .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${googleUser.access_token}`, {
+                            headers: {
+                                Authorization: `Bearer ${googleUser.access_token}`,
+                                Accept: 'application/json'
+                            }
+                        })
+                    handleGoogleSubmit(res.data)
+                } catch (err) {
+                    console.log('error fetching google data' , err)
+                }
+            }
+        }
+        googleFetch()
+    }, [googleUser])
+
+
+    function submit(googleUser) {
+        if (isLogin) {
+            if (googleUser) dispatch(login(googleUser))
+            else dispatch(login(userCred))
+        }
+        else {
+            if (googleUser) dispatch(signup(googleUser))
+            else dispatch(signup(userCred))
+        }
+    }
+
+    // Makes a user that fits to my user details from the google info
+    function handleGoogleSubmit(user) {
+        const newGoogleUser = {
+            accountName: user.name,
+            email: user.email,
+            password: user.id
+        }
+        submit(newGoogleUser)
     }
 
     function validate(fields) {
@@ -100,6 +150,14 @@ export function Login() {
                     {!isLogin && errors.password && <span className='error'>{errors.password}</span>}
                     <button>{isLogin ? 'Login' : 'Signup'}</button>
                 </form>
+                <span className='or-auth'>OR</span>
+                <button className='btn-google' onClick={() => googleLogin()}>
+                    <span className='google-icon'
+                        dangerouslySetInnerHTML={{
+                            __html: getSvg('google'),
+                        }}></span>
+                    <span>Continue With Google</span>
+                </button>
             </section>
             <div className='modal-background'></div>
         </>
