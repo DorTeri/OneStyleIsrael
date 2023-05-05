@@ -15,6 +15,9 @@
       width: 100%;
       height: 100%;
       aspect-ratio: auto;
+      // @include for-mobile-layout {
+      //   width: 130px;
+      // }
     }
 
     .img-top {
@@ -37,12 +40,20 @@
     font-family: poppins-medium;
   }
 
+  h4 {
+    @include for-mobile-layout {
+      font-size: 13px;
+    }
+  }
   .price-wrapper {
     gap: 20px;
     font-family: poppins-medium;
 
     span {
       font-size: 1rem;
+      @include for-mobile-layout {
+        font-size: 0.8rem;
+      }
     }
 
     > :last-child {

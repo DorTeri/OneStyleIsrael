@@ -12,6 +12,9 @@
             width: 35%;
             height: 1px;
             background-color: black;
+            @include for-mobile-layout {
+                max-width: 29%;
+            }
         }
 
         &::after {
@@ -22,6 +25,9 @@
             width: 35%;
             height: 1px;
             background-color: black;
+            @include for-mobile-layout {
+                width: 30%;
+            }
         }
     }
 
@@ -31,5 +37,8 @@
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
         gap: 30px;
         margin-bottom: 50px;
+        @include for-mobile-layout {
+            grid-template-columns: repeat(2, 1fr);
+          }
     }
 }

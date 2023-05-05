@@ -10,6 +10,10 @@
     padding: 20px;
     border-radius: 8px;
     transition: .3s;
+    @include for-mobile-layout {
+        width: 350px;
+       
+      }
 
     .login-header {
         margin-bottom: 20px;

@@ -9,6 +9,9 @@
     translate: -50%;
     animation: drop .2s;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    @include for-mobile-layout {
+      
+    }
 
     > * {
         animation: opacity-delay .2s;

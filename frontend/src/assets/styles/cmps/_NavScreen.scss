@@ -1,5 +1,8 @@
 .nav-screen {
     position: relative;
+    @include for-mobile-layout {
+        // padding: 0 50px;
+    }
 
     .nav-content {
         position: absolute;
@@ -10,9 +13,11 @@
         z-index: 10;
 
         .nav-content-header {
-            padding-inline: 10px;
+            padding-inline: 8px;
             box-shadow: rgb(229, 229, 229) 0px 0px 0px 0px inset, rgb(229, 229, 229) 0px 0px 0px 0px inset, rgb(229, 229, 229) 0px -1px 0px 0px inset, rgb(229, 229, 229) 0px 0px 0px 0px inset;
-
+       h2 {
+        font-size: 22px;
+       }
             span {
                 cursor: pointer;
                 height: 24px;

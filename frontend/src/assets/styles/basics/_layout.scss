@@ -6,9 +6,9 @@
         grid-column: 2;
     }
     
-    // @include for-mobile-layout {
-    //     grid-template-columns: 10px auto 10px;
-    // }
+    @include for-mobile-layout {
+        grid-template-columns: 10px auto 10px;
+    }
 
     // @include for-tablet-layout {
     //     grid-template-columns: 30px auto 30px;

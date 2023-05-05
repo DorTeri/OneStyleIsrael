@@ -20,6 +20,9 @@
   top: 0;
   z-index: 1;
   background: white;
+  @include for-mobile-layout {
+    padding: 0;
+  }
 
   .header-icons {
     a {
@@ -41,9 +44,16 @@
       display: inline-flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
+      @include for-mobile-layout {
+        width: fit-content;
+      }
 
       &.cart {
         margin-right: 20px;
+        @include for-mobile-layout {
+          margin-right: 10px;
+        }
       }
 
       &:hover {
@@ -56,12 +66,14 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
-
       }
 
       .star-icon {
         padding-top: 5px;
         cursor: pointer;
+        @include for-mobile-layout {
+          padding-top: 7.2px;
+        }
       }
 
       .user-icon {
@@ -87,6 +99,7 @@
     align-items: center;
     font-size: 35px;
     cursor: pointer;
+    font-weight: bolder;
   }
 
   .header-nav {
@@ -98,9 +111,7 @@
     }
 
     .header-links {
-
-      //   margin-top: 20px;
-      &>* {
+      & > * {
         margin-inline-end: 65px;
       }
 
@@ -149,6 +160,9 @@
       }
     }
 
+    span {
+      cursor: pointer;
+    }
     .main-search {
       display: flex;
       align-items: flex-end;
@@ -167,6 +181,7 @@
 
       svg {
         display: flex;
+        cursor: pointer;
       }
     }
   }
@@ -175,15 +190,22 @@
     align-items: center;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
+    h1 {
+      @include for-mobile-layout {
+        font-size: 22px;
+      }
+    }
 
     .header-icons {
       justify-self: end;
     }
 
     .mobile-icons {
+      @include for-mobile-layout {
+        margin-top: 8px;
+      }
 
-
-      >* {
+      > * {
         padding-inline-start: 10px;
         display: none;
 
@@ -194,10 +216,10 @@
 
       span {
         cursor: pointer;
-
         svg {
           width: 24px;
           height: 24px;
+          fill: #444;
         }
       }
     }
