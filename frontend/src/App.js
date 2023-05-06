@@ -7,7 +7,6 @@ import { ProductsPage } from './views/ProductsPage';
 import { ProductDetails } from './views/ProductDetails';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { signup } from './store/actions/user.actions';
 import { Cart } from './views/Cart';
 import { Admin } from './views/Admin';
 import { ProductEdit } from './views/ProductEdit';
@@ -18,6 +17,7 @@ import { UserMsg } from './cmps/UserMsg';
 import { Login } from './cmps/Login';
 import { UserDetails } from './views/UserDetails';
 import { ShippingAdress } from './views/ShippingAdress';
+import { userService } from './services/user.service';
 
 
 function App() {
@@ -26,6 +26,7 @@ function App() {
 
   useEffect(() => {
     dispatch(loadBrands())
+    userService.setLocalCart()
   }, [])
 
   return (

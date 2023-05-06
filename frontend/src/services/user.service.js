@@ -10,6 +10,7 @@ export const userService = {
   getEmptyContact,
   updateUser,
   logout,
+  setLocalCart
 }
 
 function getUser() {
@@ -51,6 +52,14 @@ function removeFromCart(productId, productSize) {
   return user
 }
 
+function setLocalCart() {
+  const user = {
+    name: 'Guest',
+    cart: [],
+  }
+  localStorage.setItem('user', JSON.stringify(user))
+}
+
 function updateLocalUser(user) {
   localStorage.setItem('user', JSON.stringify(user))
 }
@@ -78,15 +87,3 @@ function getEmptyContact() {
     phone: '',
   }
 }
-
-async function adminSignup(userCred) {
-  const user = await httpService.post('auth/signup', userCred)
-}
-
-// const adminCred = {
-//     email: 'dor@gmail.com',
-//     password: '1234',
-//     accountName: 'dor'
-// }
-
-// adminSignup(adminCred)
