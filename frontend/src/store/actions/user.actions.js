@@ -30,7 +30,9 @@ export function signup(userCred) {
     console.log('signup')
     return async (dispatch, getState) => {
         try {
+            console.log(userCred)
             const user = await userService.signup(userCred)
+            console.log(user)
             dispatch({ type: SET_USER, user })
             showSuccessMsg('Signed up seccessfully')
             return user

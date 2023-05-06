@@ -7,7 +7,7 @@ import { addToCart } from '../store/actions/user.actions'
 import { utilService } from '../services/util.service'
 import { loadProducts } from '../store/actions/products.actions'
 import { Loader } from '../cmps/Loader'
-import { showSuccessMsg } from '../services/event-bus.service'
+import { showSuccessMsg , showErrorMsg} from '../services/event-bus.service'
 
 export function ProductDetails() {
 
@@ -61,7 +61,10 @@ export function ProductDetails() {
     }
 
     function onAddToCart() {
-        if(!cartProduct) return
+        if(!cartProduct || !cartProduct.size) {
+            showErrorMsg(`Please select a size`)
+            return
+        }
         dispatch(addToCart(cartProduct))
         showSuccessMsg(`Added to cart successfully`)
     }

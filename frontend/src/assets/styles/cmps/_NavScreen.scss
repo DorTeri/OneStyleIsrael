@@ -11,12 +11,18 @@
         width: 43%;
         height: 100vh;
         z-index: 10;
+        @include for-mobile-layout {
+            width: auto;
+        }
 
         .nav-content-header {
             padding-inline: 8px;
             box-shadow: rgb(229, 229, 229) 0px 0px 0px 0px inset, rgb(229, 229, 229) 0px 0px 0px 0px inset, rgb(229, 229, 229) 0px -1px 0px 0px inset, rgb(229, 229, 229) 0px 0px 0px 0px inset;
        h2 {
         font-size: 22px;
+        @include for-mobile-layout {
+            font-size: 20px;
+        }
        }
             span {
                 cursor: pointer;
@@ -25,6 +31,10 @@
                     width: 24px;
                     height: 24px;
                     fill: rgb(71, 71, 71);
+                    @include for-mobile-layout {
+                        width: 20px;
+                        margin-left: 7px;
+                    }
                 }
             }
         }
