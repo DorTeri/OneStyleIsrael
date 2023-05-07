@@ -84,9 +84,8 @@ export function AppHeader() {
             ONE STYLE ISRAEL
           </h1>
           <div className="header-icons flex align-center">
-            <div className="icon-container">
+            <div className="icon-container" onClick={() => openUserLogin()}>
               <span
-                onClick={() => openUserLogin()}
                 className="user-icon"
                 dangerouslySetInnerHTML={{
                   __html: getSvg('user'),

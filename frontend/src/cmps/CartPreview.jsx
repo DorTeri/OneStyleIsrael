@@ -20,7 +20,7 @@ export function CartPreview({ product , onRemoveProduct }) {
                     <h4>Size {product.size}</h4>
                 </div>
                 <span
-                    onClick={ () => onRemoveProduct(product._id , product.size)}
+                    onClick={ () => onRemoveProduct(product.cartId)}
                     className="trash-icon"
                     dangerouslySetInnerHTML={{
                         __html: getSvg('trash'),
