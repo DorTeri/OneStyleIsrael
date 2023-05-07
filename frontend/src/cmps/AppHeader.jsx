@@ -7,6 +7,7 @@ import { NavScreen } from './NavScreen'
 import { HeaderExpand } from './HeaderExpand'
 import { productService } from '../services/product.service'
 import { eventBus } from '../services/event-bus.service'
+import MainFilter from './MainFilter'
 
 export function AppHeader() {
   const navigate = useNavigate()
@@ -14,6 +15,7 @@ export function AppHeader() {
 
   const user = useSelector((storeState) => storeState.userModule.loggedInUser)
   const brands = useSelector((storeState) => storeState.productsModule.brands)
+  console.log(brands)
 
   const [showInput, setShowInput] = useState(false)
   const [showScreen, setShowScreen] = useState(false)
@@ -44,13 +46,25 @@ export function AppHeader() {
     else eventBus.emit('show-login', false)
   }
 
+  const [searchQuery, setSearchQuery] = useState('') // state variable for search query
+
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value) // update search query state variable
+    const filterBy = {
+      search: event.target.value, // create filter object with search query
+    }
+    dispatch(setFilterBy(filterBy)) // dispatch action to update filter
+  }
+
+  // const regex = new RegExp(searchQuery, 'i') // create regex to match search query (case-insensitive)
+
   return (
     <>
       <div className="new-sale full">מבצעים חדשים נחתו באתר</div>
       <section className="header-section full">
         <NavScreen showScreen={showScreen} setShowScreen={setShowScreen} />
         <section className="header-nav-content">
-          <div className='mobile-icons'>
+          <div className="mobile-icons">
             <span
               onClick={() => setShowScreen(!showScreen)}
               className="menu-icon"
@@ -89,36 +103,43 @@ export function AppHeader() {
                 />
               </div>
             </NavLink>
-            <NavLink to='/cart'>
+            <NavLink to="/cart">
               <div className="icon-container cart">
                 <span
                   className="cart-icon"
                   dangerouslySetInnerHTML={{
                     __html: getSvg('cart'),
                   }}
-                /><span className='cart-count'>{getCartCount()}</span>
+                />
+                <span className="cart-count">{getCartCount()}</span>
               </div>
-
             </NavLink>
           </div>
         </section>
         <div className="header-nav flex align-center justify-center">
           {!showInput && (
             <nav className="header-links">
-              <NavLink to='/'>
+              <NavLink to="/">
                 <span className="featured">New & Featured</span>
               </NavLink>
-              <NavLink to='/adidas'>Adidas
+              <NavLink to="/adidas">
+                Adidas
                 <HeaderExpand ctgs={brands['adidas']} brand={'adidas'} />
               </NavLink>
-              <NavLink to='/nike'>Nike
+              <NavLink to="/nike">
+                Nike
                 <HeaderExpand ctgs={brands['nike']} brand={'nike'} />
               </NavLink>
-              <NavLink to='/jordan'>Jordan
+              <NavLink to="/jordan">
+                Jordan
                 <HeaderExpand ctgs={brands['jordan']} brand={'jordan'} />
               </NavLink>
-              <NavLink to='/new balance'>New Balance
-                <HeaderExpand ctgs={brands['new balance']} brand={'new balance'} />
+              <NavLink to="/new balance">
+                New Balance
+                <HeaderExpand
+                  ctgs={brands['new balance']}
+                  brand={'new balance'}
+                />
               </NavLink>
             </nav>
           )}
@@ -130,6 +151,8 @@ export function AppHeader() {
                   placeholder="Search"
                   className="main-search"
                   autoFocus
+                  value={searchQuery}
+                  onChange={handleInputChange}
                 />
                 {showInput && (
                   <span className="cancel" onClick={onCancelClick}>
@@ -145,6 +168,55 @@ export function AppHeader() {
                 }}
                 onClick={onSearchClick}
               />
+            )}
+
+            {searchQuery && (
+              <div className="search-results">
+                <h4>Results for "{searchQuery}"</h4>
+                <ul>
+                  {Object.entries(brands).map(
+                    ([brand, categories]) =>
+                      categories.filter(
+                        (category) =>
+                          category
+                            .toLowerCase()
+                            .includes(searchQuery.toLowerCase()) ||
+                          brand
+                            .toLowerCase()
+                            .includes(searchQuery.toLowerCase())
+                      ).length > 0 && (
+                        <li key={brand}>
+                          <NavLink
+                            to={`/${brand}`}
+                            onClick={() => onNavClick(brand)}
+                          >
+                            {brand}
+                          </NavLink>
+                          <ul>
+                            {categories
+                              .filter((category) =>
+                                category
+                                  .toLowerCase()
+                                  .includes(searchQuery.toLowerCase())
+                              )
+                              .map((category) => (
+                                <li key={category}>
+                                  <NavLink
+                                    to={`/${brand}/${category}`}
+                                    onClick={() =>
+                                      onNavClick(`${brand}/${category}`)
+                                    }
+                                  >
+                                    {category}
+                                  </NavLink>
+                                </li>
+                              ))}
+                          </ul>
+                        </li>
+                      )
+                  )}
+                </ul>
+              </div>
             )}
           </div>
         </div>
