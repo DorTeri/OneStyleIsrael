@@ -5,7 +5,8 @@ import { SET_USER } from "../reducers/user.reducer"
 export function addToCart(product) {
     return async (dispatch, getState) => {
         try {
-            const user = userService.addToCart(product , getState().userModule.loggedInUser)
+            const user = await userService.addToCart(product , getState().userModule.loggedInUser)
+            console.log('user222', user)
             dispatch({ type: SET_USER, user })
         } catch (error) {
             console.log('error:', error)
@@ -16,7 +17,7 @@ export function addToCart(product) {
 export function removeFromCart(productId, productSize) {
     return async (dispatch, getState) => {
         try {
-            const user = userService.removeFromCart(productId, productSize)
+            const user = await userService.removeFromCart(productId, productSize , getState().userModule.loggedInUser)
             dispatch({ type: SET_USER, user })
             showSuccessMsg(`Product removed successfully`)
         } catch (error) {

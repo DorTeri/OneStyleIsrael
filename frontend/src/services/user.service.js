@@ -31,26 +31,21 @@ function logout() {
   return httpService.post(`auth/logout`)
 }
 
-function updateUser(user) {
-  console.log('user1111', user)
+async function updateUser(user) {
   return httpService.put(`user/${user._id}`, user)
 }
 
-function addToCart(product , user) {
+async function addToCart(product , user) {
   user = user._id ? user : getUser()
   user.cart.unshift(product)
-  user._id ? updateUser(user) : updateLocalUser(user)
-  console.log('user', user)
+  user._id ? await updateUser(user) : updateLocalUser(user)
   return user
 }
 
-function removeFromCart(productId, productSize) {
-  const user = getUser()
-  const idx = user.cart.findIndex(
-    (p) => p._id === productId && p.size === productSize
-  )
-  user.cart.splice(idx, 1)
-  updateLocalUser(user)
+async function removeFromCart(productId, productSize , user) {
+  user = user._id ? user : getUser()
+  user.cart = user.cart.filter(p => p._id !== productId && p.size !== productSize)
+  user._id ? await updateUser(user) : updateLocalUser(user)
   return user
 }
 

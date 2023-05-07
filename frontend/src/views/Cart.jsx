@@ -45,8 +45,8 @@ export function Cart() {
     }
 
     function checkout() {
-        if(!user.accountName) eventBus.emit('show-login', false)
-        else if(user.accountName) navigate('/shippingAddress')
+        if(!user._id) eventBus.emit('show-login', false)
+        else navigate('/shippingAddress')
     }
 
 
