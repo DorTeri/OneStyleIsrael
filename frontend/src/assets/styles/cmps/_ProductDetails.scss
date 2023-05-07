@@ -30,9 +30,38 @@
         .size-select {
           border-radius: 6px;
           height: 50px;
+          font-size: 16px;
+          position: relative;
+          background: transparent;
+          background-image: none;
+          display: block;
+          // width: 100%;
+          outline: none;
+          color: #888888;
+          cursor: pointer;
+          z-index: 2;
+          padding: 10px 10px 10px 5px;
+          padding-inline: 10px;
+          // This is so hacky.. (for Firefox)
+          // Removes the default select arrow.
+          text-overflow: '';
+          text-indent: 5px;
           @include for-mobile-layout {
             margin: 10px 0;
           }
+          option {
+            background-color: rgb(248, 248, 248);
+            font-size: 16px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          option[disabled] {
+            color: #eeeeee;
+            text-shadow: none;
+            border: none;
+        }
         }
 
         .btn-container {
