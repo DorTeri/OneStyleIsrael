@@ -159,7 +159,7 @@ export function Login() {
                     <span>Continue With Google</span>
                 </button>
             </section>
-            <div className='modal-background'></div>
+            <div className='modal-background' onClick={() => closeModal()}></div>
         </>
     )
 }
