@@ -3,31 +3,28 @@ import { useSelector } from 'react-redux'
 import { getSvg } from '../services/svg.service'
 import { NavLink, useNavigate } from 'react-router-dom'
 
-function MainFilter({ setShowInput, onNavClick }) {
+function MainFilter({ onNavClick, onCancelClick }) {
   const brands = useSelector((storeState) => storeState.productsModule.brands)
   console.log(brands)
 
-  const [searchQuery, setSearchQuery] = useState('') // state variable for search query
+  const [searchQuery, setSearchQuery] = useState('')
 
   const handleInputChange = (event) => {
-    setSearchQuery(event.target.value) // update search query state variable
+    setSearchQuery(event.target.value)
   }
 
-  const regex = new RegExp(searchQuery, 'i') // create regex to match search query (case-insensitive)
-
-  const filteredBrands = Object.keys(brands).filter((key) =>
-    brands[key].some((item) => regex.test(item))
-  )
-
-  function onSearchClick() {
-    setShowInput(true)
+  const boldify = (text) => {
+    if (searchQuery !== '') {
+      const regex = new RegExp(searchQuery, 'gi')
+      return text.replace(regex, (match) => `<b>${match}</b>`)
+    } else {
+      return text
+    }
   }
 
-  function onCancelClick() {
-    setShowInput(false)
-  }
   return (
-    <div className="flex">
+    <>
+    <div className="main-filter flex column">
       <div className="flex align-center justify-center">
         <input
           type="text"
@@ -43,18 +40,10 @@ function MainFilter({ setShowInput, onNavClick }) {
         </span>
       </div>
 
-      <span
-        className="search-icon"
-        dangerouslySetInnerHTML={{
-          __html: getSvg('search'),
-        }}
-        onClick={onSearchClick}
-      />
-
-      {searchQuery && (
+      {searchQuery !== '' && (
         <div className="search-results">
           <h4>Results for "{searchQuery}"</h4>
-          <ul>
+          <section className="results">
             {Object.entries(brands).map(
               ([brand, categories]) =>
                 categories.filter(
@@ -64,11 +53,14 @@ function MainFilter({ setShowInput, onNavClick }) {
                       .includes(searchQuery.toLowerCase()) ||
                     brand.toLowerCase().includes(searchQuery.toLowerCase())
                 ).length > 0 && (
-                  <li key={brand}>
+                  <div key={brand}>
                     <NavLink to={`/${brand}`} onClick={() => onNavClick(brand)}>
-                      {brand}
+                      <span
+                        dangerouslySetInnerHTML={{ __html: boldify(brand) }}
+                      />
                     </NavLink>
-                    <ul>
+                    <span className="brand-label"> Brand</span>
+                    <section>
                       {categories
                         .filter((category) =>
                           category
@@ -76,23 +68,29 @@ function MainFilter({ setShowInput, onNavClick }) {
                             .includes(searchQuery.toLowerCase())
                         )
                         .map((category) => (
-                          <li key={category}>
+                          <div key={category}>
                             <NavLink
                               to={`/${brand}/${category}`}
                               onClick={() => onNavClick(`${brand}/${category}`)}
                             >
-                              {category}
+                              <span
+                                dangerouslySetInnerHTML={{
+                                  __html: boldify(category),
+                                }}
+                              />
                             </NavLink>
-                          </li>
+                          </div>
                         ))}
-                    </ul>
-                  </li>
+                    </section>
+                  </div>
                 )
             )}
-          </ul>
+          </section>
         </div>
       )}
     </div>
+    {/* <div className='modal-background'></div> */}
+     </>
   )
 }
 

@@ -5,7 +5,7 @@ import { setFilterBy } from '../store/actions/products.actions'
 import { getSvg } from '../services/svg.service'
 import { NavScreen } from './NavScreen'
 import { HeaderExpand } from './HeaderExpand'
-import { productService } from '../services/product.service'
+// import { productService } from '../services/product.service'
 import { eventBus } from '../services/event-bus.service'
 import MainFilter from './MainFilter'
 
@@ -45,18 +45,6 @@ export function AppHeader() {
     if (user._id) navigate(`user/${user._id}`)
     else eventBus.emit('show-login', false)
   }
-
-  const [searchQuery, setSearchQuery] = useState('') // state variable for search query
-
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value) // update search query state variable
-    const filterBy = {
-      search: event.target.value, // create filter object with search query
-    }
-    dispatch(setFilterBy(filterBy)) // dispatch action to update filter
-  }
-
-  // const regex = new RegExp(searchQuery, 'i') // create regex to match search query (case-insensitive)
 
   return (
     <>
@@ -116,9 +104,9 @@ export function AppHeader() {
           </div>
         </section>
         <div className="header-nav flex align-center justify-center">
-          {!showInput && (
+          {!showInput ? (
             <nav className="header-links">
-              <NavLink to="/">
+              <NavLink to="/newFeatured">
                 <span className="featured">New & Featured</span>
               </NavLink>
               <NavLink to="/adidas">
@@ -141,85 +129,21 @@ export function AppHeader() {
                 />
               </NavLink>
             </nav>
-          )}
-          <div className="flex">
-            {showInput ? (
-              <div className="flex align-center justify-center">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="main-search"
-                  autoFocus
-                  value={searchQuery}
-                  onChange={handleInputChange}
-                />
-                {showInput && (
-                  <span className="cancel" onClick={onCancelClick}>
-                    Cancel
-                  </span>
-                )}
-              </div>
-            ) : (
-              <span
-                className="search-icon"
-                dangerouslySetInnerHTML={{
-                  __html: getSvg('search'),
-                }}
-                onClick={onSearchClick}
-              />
+          ) : (
+            <MainFilter onCancelClick={onCancelClick} onNavClick={onNavClick} />
             )}
-
-            {searchQuery && (
-              <div className="search-results">
-                <h4>Results for "{searchQuery}"</h4>
-                <ul>
-                  {Object.entries(brands).map(
-                    ([brand, categories]) =>
-                      categories.filter(
-                        (category) =>
-                          category
-                            .toLowerCase()
-                            .includes(searchQuery.toLowerCase()) ||
-                          brand
-                            .toLowerCase()
-                            .includes(searchQuery.toLowerCase())
-                      ).length > 0 && (
-                        <li key={brand}>
-                          <NavLink
-                            to={`/${brand}`}
-                            onClick={() => onNavClick(brand)}
-                          >
-                            {brand}
-                          </NavLink>
-                          <ul>
-                            {categories
-                              .filter((category) =>
-                                category
-                                  .toLowerCase()
-                                  .includes(searchQuery.toLowerCase())
-                              )
-                              .map((category) => (
-                                <li key={category}>
-                                  <NavLink
-                                    to={`/${brand}/${category}`}
-                                    onClick={() =>
-                                      onNavClick(`${brand}/${category}`)
-                                    }
-                                  >
-                                    {category}
-                                  </NavLink>
-                                </li>
-                              ))}
-                          </ul>
-                        </li>
-                      )
-                  )}
-                </ul>
-              </div>
-            )}
-          </div>
+          {!showInput ? (
+          <span
+            className="search-icon"
+            dangerouslySetInnerHTML={{
+              __html: getSvg('search'),
+            }}
+            onClick={onSearchClick}
+          />
+          ) : null}
         </div>
       </section>
+
     </>
   )
 }

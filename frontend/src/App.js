@@ -18,6 +18,8 @@ import { Login } from './cmps/Login';
 import { UserDetails } from './views/UserDetails';
 import { ShippingAdress } from './views/ShippingAdress';
 import { setLocalCart } from './store/actions/user.actions';
+import { NewFeatured } from  './views/NewFeatured';
+
 
 
 function App() {
@@ -46,6 +48,7 @@ function App() {
             <Route path="/edit/:id?" element={<ProductEdit />} />
             <Route path="/user/:id" element={<UserDetails />} />
             <Route path="/shippingAddress" element={<ShippingAdress />} />
+            <Route path="/newFeatured" element={<NewFeatured />} />
           </Routes>
         </section>
         <AppFooter />

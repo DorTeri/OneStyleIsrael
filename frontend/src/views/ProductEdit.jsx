@@ -34,6 +34,8 @@ export function ProductEdit() {
     async function onSaveProduct(ev) {
         ev.preventDefault()
         try {
+            product.createdAt = Date.now()
+            console.log(product)
             dispatch(saveProduct(product))
             navigate(-1)
         } catch (error) {
