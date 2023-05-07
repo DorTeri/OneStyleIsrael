@@ -84,7 +84,6 @@ async function remove(userId) {
 
 async function update(user) {
     try {
-        console.log('user', user)
         // peek only updatable properties
         const userToSave = {
             _id: ObjectId(user._id), // needed for the returnd obj

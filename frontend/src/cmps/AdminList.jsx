@@ -35,19 +35,3 @@ export function AdminList({ products , onRemoveProduct}) {
         </section>
     )
 }
-
-
-// db.shoes.aggregate([
-//     {
-//       $group: {
-//         _id: "$brand",
-//         items: { $push: "$$ROOT" }
-//       }
-//     },
-//     {
-//       $project: {
-//         brand: "$_id",
-//         items: { $slice: ["$items", 4] }
-//       }
-//     }
-//   ])

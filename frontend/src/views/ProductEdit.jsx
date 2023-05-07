@@ -7,7 +7,7 @@ import { saveProduct } from '../store/actions/products.actions'
 
 export function ProductEdit() {
 
-    const admin = useSelector((storeState) => storeState.userModule.admin)
+    const user = useSelector((storeState) => storeState.userModule.loggedInUser)
     const [product, handleChange, setProduct] = useForm(productService.getEmptyProduct())
 
     const dispatch = useDispatch()
@@ -15,6 +15,7 @@ export function ProductEdit() {
     const navigate = useNavigate()
 
     useEffect(() => {
+        if(!user || !user.isAdmin) navigate('/')
         loadProduct()
     }, [])
 
@@ -40,7 +41,7 @@ export function ProductEdit() {
         }
     }
 
-    if(!admin) navigate('/')
+    if(!user || !user.isAdmin) return
     const {brand , ctg , model , type , price , prevPrice , url1 , url2 , url3 , url4} = product
     return (
         <section className='product-edit'>
