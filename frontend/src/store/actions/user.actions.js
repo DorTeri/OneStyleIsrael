@@ -6,7 +6,6 @@ export function addToCart(product) {
     return async (dispatch, getState) => {
         try {
             const user = await userService.addToCart(product , getState().userModule.loggedInUser)
-            console.log('user222', user)
             dispatch({ type: SET_USER, user })
         } catch (error) {
             console.log('error:', error)

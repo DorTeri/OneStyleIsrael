@@ -33,7 +33,6 @@ function logout() {
 
 async function updateUser(user) {
   const savedUser = await httpService.put(`user/${user._id}`, user)
-  console.log('savedUser', savedUser)
   return savedUser
 }
 
@@ -46,7 +45,6 @@ async function addToCart(product, user) {
 }
 
 async function removeFromCart(productId, user) {
-  console.log('productId123', productId)
   user = user._id ? user : getUser()
   user.cart = user.cart.filter(p => p.cartId !== productId)
   if (user._id) return await updateUser(user)
