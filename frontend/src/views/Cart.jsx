@@ -17,15 +17,14 @@ export function Cart() {
     const [ subtotal , setSubtotal] = useState(null)
     const [ total , setTotal] = useState(null) 
 
-
     useEffect(() => {
         if(!user) return
         setSubtotal(getSubtotal())
         setTotal(getSubtotal() + 50)
     } , [user?.cart])
 
-    function onRemoveProduct(productId, productSize) {
-        dispatch(removeFromCart(productId, productSize))
+    function onRemoveProduct(productId) {
+        dispatch(removeFromCart(productId))
     }
 
     function getSubtotal() {

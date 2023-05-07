@@ -12,7 +12,8 @@ const imgs = [
 export const utilService = {
   getRandomColor,
   getRandomImg,
-  capFirstLetter
+  capFirstLetter,
+  makeId,
 }
 
 function getRandomIntInclusive(min, max) {
@@ -37,4 +38,14 @@ function getRandomImg() {
 
 function capFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+function makeId(length = 8) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
 }
