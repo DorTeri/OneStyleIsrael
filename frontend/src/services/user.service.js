@@ -32,21 +32,25 @@ function logout() {
 }
 
 async function updateUser(user) {
-  return httpService.put(`user/${user._id}`, user)
+  const savedUser = await httpService.put(`user/${user._id}`, user)
+  console.log('savedUser', savedUser)
+  return savedUser
 }
 
-async function addToCart(product , user) {
+async function addToCart(product, user) {
   user = user._id ? user : getUser()
   user.cart.unshift(product)
-  user._id ? await updateUser(user) : updateLocalUser(user)
-  return user
+  // user._id ? await updateUser(user) : updateLocalUser(user)
+  if (user._id) return await updateUser(user)
+  else return updateLocalUser(user)
 }
 
-async function removeFromCart(productId, productSize , user) {
+async function removeFromCart(productId, user) {
+  console.log('productId123', productId)
   user = user._id ? user : getUser()
-  user.cart = user.cart.filter(p => p._id !== productId && p.size !== productSize)
-  user._id ? await updateUser(user) : updateLocalUser(user)
-  return user
+  user.cart = user.cart.filter(p => p.cartId !== productId)
+  if (user._id) return await updateUser(user)
+  else return updateLocalUser(user)
 }
 
 function setLocalCart() {

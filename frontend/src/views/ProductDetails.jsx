@@ -20,7 +20,6 @@ export function ProductDetails() {
     const [cartProduct, setCartProduct] = useState(null)
 
     useEffect(() => {
-        console.log(products);
         dispatch(loadProducts())
     }, [])
 
@@ -65,6 +64,7 @@ export function ProductDetails() {
             showErrorMsg(`Please select a size`)
             return
         }
+        cartProduct.cartId = utilService.makeId()
         dispatch(addToCart(cartProduct))
         showSuccessMsg(`Added to cart successfully`)
     }
