@@ -38,7 +38,7 @@ async function getById(userId) {
         const user = await collection.findOne({ _id: ObjectId(userId) })
         delete user.password
 
-        user.givenReviews = await reviewService.query({ byUserId: ObjectId(user._id) })
+        // user.givenReviews = await reviewService.query({ byUserId: ObjectId(user._id) })
         // user.givenReviews = user.givenReviews.map(review => {
         //     delete review.byUser
         //     return review
@@ -89,7 +89,7 @@ async function update(user) {
         const userToSave = {
             _id: ObjectId(user._id), // needed for the returnd obj
             accountName: user.accountName,
-            password: user.password,
+            // password: user.password,
             email:user.email,
             cart: user.cart,
             favorites: user.favorites,

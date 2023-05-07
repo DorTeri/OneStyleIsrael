@@ -32,13 +32,15 @@ function logout() {
 }
 
 function updateUser(user) {
+  console.log('user1111', user)
   return httpService.put(`user/${user._id}`, user)
 }
 
-function addToCart(product) {
-  const user = getUser()
+function addToCart(product , user) {
+  user = user._id ? user : getUser()
   user.cart.unshift(product)
-  updateLocalUser(user)
+  user._id ? updateUser(user) : updateLocalUser(user)
+  console.log('user', user)
   return user
 }
 
@@ -58,10 +60,12 @@ function setLocalCart() {
     cart: [],
   }
   localStorage.setItem('user', JSON.stringify(user))
+  return user
 }
 
 function updateLocalUser(user) {
   localStorage.setItem('user', JSON.stringify(user))
+  return getUser()
 }
 
 // function lastMoves(moves, id) {

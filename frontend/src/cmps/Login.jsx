@@ -120,7 +120,7 @@ export function Login() {
     }
 
     const { email, password, accountName } = userCred
-    if (!showLogin || user) return
+    if (!showLogin || user._id) return
     return (
         <>
             <section className='login'>

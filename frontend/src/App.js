@@ -17,7 +17,7 @@ import { UserMsg } from './cmps/UserMsg';
 import { Login } from './cmps/Login';
 import { UserDetails } from './views/UserDetails';
 import { ShippingAdress } from './views/ShippingAdress';
-import { userService } from './services/user.service';
+import { setLocalCart } from './store/actions/user.actions';
 
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     dispatch(loadBrands())
-    userService.setLocalCart()
+    dispatch(setLocalCart())
   }, [])
 
   return (
