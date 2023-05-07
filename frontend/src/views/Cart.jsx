@@ -4,20 +4,19 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { CartPreview } from '../cmps/CartPreview'
 import { removeFromCart } from '../store/actions/user.actions'
 import { Recommended } from '../cmps/Recommended'
-import { productService } from '../services/product.service'
 import { Loader } from '../cmps/Loader'
-import { userService } from '../services/user.service'
 import { eventBus } from '../services/event-bus.service'
 
 export function Cart() {
 
     const products = useSelector((storeState) => storeState.productsModule.products)
-    const user = useSelector((storeState) => storeState.userModule.loggedInUser) || userService.getUser()
+    const user = useSelector((storeState) => storeState.userModule.loggedInUser)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const [ subtotal , setSubtotal] = useState(null)
     const [ total , setTotal] = useState(null) 
+
 
     useEffect(() => {
         if(!user) return
