@@ -8,16 +8,15 @@ require('dotenv').config();
 const app = express()
 const http = require('http').createServer(app)
 
-const buildPath = path.join(__dirname, 'build')
 
 // Express App Config
 app.use(bodyParser.json({limit: '50mb'}))
 app.use(cookieParser())
 app.use(express.json({limit: '50mb'}))
-app.use(express.static(buildPath))
+app.use(express.static('build'))
 
 if ('production' === 'production') {
-    app.use(express.static(path.resolve(__dirname, buildPath) ))
+    app.use(express.static(path.resolve(__dirname, 'build') ))
 } else {
     const corsOptions = {
         origin: ['http://127.0.0.1:5173', 'http://localhost:5173', 'http://127.0.0.1:3000', 'http://localhost:3000' , 'https://onestyleisrael.onrender.com'],
@@ -46,7 +45,7 @@ setupSocketAPI(http)
 // so when requesting http://localhost:3030/index.html/product/123 it will still respond with
 // our SPA (single page app) (the index.html file) and allow vue/react-router to take it from there
 app.get('/**', (req, res) => {
-    res.sendFile(path.join(__dirname, buildPath, 'index.html'))
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
 
