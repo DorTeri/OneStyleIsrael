@@ -1,6 +1,10 @@
 {
   "name": "mutagim",
   "version": "0.1.0",
+  "engines": {
+    "npm": "9.5.0",
+    "node": "18.14.2"
+  },
   "homepage": "https://DorTeri.github.io/OneStyleIsrael",
   "private": true,
   "dependencies": {
@@ -26,6 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start1": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
