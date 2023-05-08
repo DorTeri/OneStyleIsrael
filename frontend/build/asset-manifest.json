@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/OneStyleIsrael/static/css/main.1deb27dc.css",
-    "main.js": "/OneStyleIsrael/static/js/main.3c8c8d02.js",
+    "main.css": "/OneStyleIsrael/static/css/main.f9a78391.css",
+    "main.js": "/OneStyleIsrael/static/js/main.68b0582e.js",
     "static/js/787.3e122af5.chunk.js": "/OneStyleIsrael/static/js/787.3e122af5.chunk.js",
     "static/media/photo-grid.jpg": "/OneStyleIsrael/static/media/photo-grid.bc99b0d7377e0e648994.jpg",
     "static/media/Poppins-Light.ttf": "/OneStyleIsrael/static/media/Poppins-Light.7641a0f76ca9ef6c252c.ttf",
@@ -9,12 +9,12 @@
     "static/media/Poppins-SemiBold.ttf": "/OneStyleIsrael/static/media/Poppins-SemiBold.ac8d04b620e54be9b0f0.ttf",
     "static/media/Aboreto-Regular.ttf": "/OneStyleIsrael/static/media/Aboreto-Regular.155aa62ca8f9a457b335.ttf",
     "index.html": "/OneStyleIsrael/index.html",
-    "main.1deb27dc.css.map": "/OneStyleIsrael/static/css/main.1deb27dc.css.map",
-    "main.3c8c8d02.js.map": "/OneStyleIsrael/static/js/main.3c8c8d02.js.map",
+    "main.f9a78391.css.map": "/OneStyleIsrael/static/css/main.f9a78391.css.map",
+    "main.68b0582e.js.map": "/OneStyleIsrael/static/js/main.68b0582e.js.map",
     "787.3e122af5.chunk.js.map": "/OneStyleIsrael/static/js/787.3e122af5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1deb27dc.css",
-    "static/js/main.3c8c8d02.js"
+    "static/css/main.f9a78391.css",
+    "static/js/main.68b0582e.js"
   ]
 }
