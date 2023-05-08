@@ -41,7 +41,8 @@ export function AppHeader() {
   }
 
   function getFavoritesCount() {
-    if (!user._id) return ''
+    if (!user) return ''
+    if (!user?._id) return ''
     else if (user.favorites.length) return user.favorites.length
   }
 
