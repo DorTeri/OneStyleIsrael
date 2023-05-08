@@ -16,7 +16,7 @@ app.use(express.json({limit: '50mb'}))
 app.use(express.static('../frontend/build'))
 
 if ('production' === 'production') {
-    app.use(express.static(path.resolve(__dirname, '../frontend/build')))
+    app.use(express.static(path.resolve(__dirname, '../frontend/build') ,{ headers: { "Content-Type": "application/json" } } ))
 } else {
     const corsOptions = {
         origin: ['http://127.0.0.1:5173', 'http://localhost:5173', 'http://127.0.0.1:3000', 'http://localhost:3000', 'https://onestyleisrael.onrender.com'],
