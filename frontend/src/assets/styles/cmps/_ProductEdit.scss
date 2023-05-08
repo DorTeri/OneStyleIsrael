@@ -1,28 +1,108 @@
 .product-edit {
-    
-    height: 80vh;
+  //   height: 80vh;
+h1 {
+    font-weight: bolder;
+}
+  .form-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 20px;
 
-    .form-wrapper {
-        display: grid;
-        grid-template-columns: 1fr 4fr;
-        gap: 20px;
-
-        img {
-            width: 200px;
-            aspect-ratio: auto;
-        }
-
-        form {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-
-            > * {
-                margin-bottom: 4px;
-            }
-        }
-
-        @include for-tablet-layout {
-            grid-template-columns: 1fr;
-        }
+    img {
+      width: 100%;
+      height: 90%;
+      aspect-ratio: auto;
     }
+    form {
+      display: grid;
+      grid-template-columns: 1fr;
+
+      > * {
+        margin-bottom: 4px;
+      }
+      @include for-mobile-layout {
+        grid-template-columns: 1fr;
+      }
+      @include for-tablet-layout {
+        grid-template-columns: 1fr;
+      }
+      label {
+        font-weight: bolder;
+      }
+      input {
+        border-radius: 4px;
+        border: 1px solid lightgray;
+        height: 33px;
+        &:focus {
+            border: 1px solid black;
+            outline: none;
+        }
+      }
+    }
+
+    @include for-tablet-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.edit-img-title {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  h1  {
+    font-size: 20px;
+  }
+  @include for-mobile-layout {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+  @include for-tablet-layout {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+}
+
+button {
+  background-color: #1b1b1b;
+  color: #fff;
+  font-family: poppins-medium;
+  font-size: 1em;
+//   width: 50%;
+  border-radius: 6px;
+  border: none;
+  transition: 0.3s;
+  margin: 15px 0;
+
+  &:hover {
+    opacity: 0.6;
+  }
+  @include for-mobile-layout {
+    background-color: #1b1b1b;
+  color: #fff;
+  font-family: poppins-medium;
+  font-size: 1em;
+  width: 50%;
+  border-radius: 6px;
+  border: none;
+  transition: 0.3s;
+  margin: 15px 0;
+  }
+  @include for-tablet-layout {
+    background-color: #1b1b1b;
+    color: #fff;
+    font-family: poppins-medium;
+    font-size: 1em;
+    width: 50%;
+    border-radius: 6px;
+    border: none;
+    transition: 0.3s;
+    margin: 15px 0;
+  }
 }

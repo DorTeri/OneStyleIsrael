@@ -47,9 +47,11 @@ export function ProductEdit() {
     const {brand , ctg , model , type , price , prevPrice , url1 , url2 , url3 , url4} = product
     return (
         <section className='product-edit'>
-            <h1>{product._id ? 'Edit' : 'Add'} Product</h1>
             <div className='form-wrapper'>
+                <div className='edit-img-title'>
+            <h1>{product._id ? 'Edit' : 'Add'} Product</h1>
                 {<img src={product.url1? product.url1 : `https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGRlZmF1bHQlMjBzaG9lJTIwaW1hZ2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60`} alt='Product image'/>}
+                </div>
                 <form onSubmit={onSaveProduct}>
                     <label htmlFor="brand">Brand</label>
                     <input value={brand} onChange={handleChange} type="text" name="brand" id="brand" />
