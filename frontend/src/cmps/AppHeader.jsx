@@ -19,6 +19,8 @@ export function AppHeader() {
   const [showInput, setShowInput] = useState(false)
   const [showScreen, setShowScreen] = useState(false)
 
+  const headerHeight = showInput ? '100vh' : 'auto'
+
   function onNavClick(path) {
     const filterBy = {
       brand: path,
@@ -29,10 +31,6 @@ export function AppHeader() {
 
   function onSearchClick() {
     setShowInput(true)
-  }
-
-  function onCancelClick() {
-    setShowInput(false)
   }
 
   function getCartCount() {
@@ -54,7 +52,7 @@ export function AppHeader() {
   return (
     <>
       <div className="new-sale full">מבצעים חדשים נחתו באתר</div>
-      <section className="header-section full">
+      <section className="header-section full" style={{ height: headerHeight }}>
         <NavScreen showScreen={showScreen} setShowScreen={setShowScreen} />
         <section className="header-nav-content">
           <div className="mobile-icons">
@@ -85,7 +83,7 @@ export function AppHeader() {
                 }}
               />
             </div>
-            <NavLink to='/favorites'>
+            <NavLink to="/favorites">
               <div className="icon-container">
                 <span
                   className="heart-icon"
@@ -136,20 +134,24 @@ export function AppHeader() {
               </NavLink>
             </nav>
           ) : (
-            <MainFilter onCancelClick={onCancelClick} onNavClick={onNavClick} />
-            )}
+            <MainFilter setShowInput={setShowInput} onNavClick={onNavClick} />
+          )}
           {!showInput ? (
-          <span
-            className="search-icon"
-            dangerouslySetInnerHTML={{
-              __html: getSvg('search'),
-            }}
-            onClick={onSearchClick}
-          />
+            <span
+              className="search-icon"
+              dangerouslySetInnerHTML={{
+                __html: getSvg('search'),
+              }}
+              onClick={onSearchClick}
+            />
           ) : null}
         </div>
+        {showInput && (
+          <section className="mobile-main-filter">
+            <MainFilter setShowInput={setShowInput} onNavClick={onNavClick} />
+          </section>
+        )}
       </section>
-
     </>
   )
 }

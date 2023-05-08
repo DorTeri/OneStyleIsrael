@@ -1,8 +1,8 @@
 .product-edit {
   //   height: 80vh;
-h1 {
+  h1 {
     font-weight: bolder;
-}
+  }
   .form-wrapper {
     display: grid;
     grid-template-columns: 1fr 4fr;
@@ -34,8 +34,8 @@ h1 {
         border: 1px solid lightgray;
         height: 33px;
         &:focus {
-            border: 1px solid black;
-            outline: none;
+          border: 1px solid black;
+          outline: none;
         }
       }
     }
@@ -50,7 +50,7 @@ h1 {
   display: grid;
   justify-items: center;
   align-items: center;
-  h1  {
+  h1 {
     font-size: 20px;
   }
   @include for-mobile-layout {
@@ -74,7 +74,7 @@ button {
   color: #fff;
   font-family: poppins-medium;
   font-size: 1em;
-//   width: 50%;
+  //   width: 50%;
   border-radius: 6px;
   border: none;
   transition: 0.3s;
@@ -85,14 +85,14 @@ button {
   }
   @include for-mobile-layout {
     background-color: #1b1b1b;
-  color: #fff;
-  font-family: poppins-medium;
-  font-size: 1em;
-  width: 50%;
-  border-radius: 6px;
-  border: none;
-  transition: 0.3s;
-  margin: 15px 0;
+    color: #fff;
+    font-family: poppins-medium;
+    font-size: 1em;
+    width: 50%;
+    border-radius: 6px;
+    border: none;
+    transition: 0.3s;
+    margin: 15px 0;
   }
   @include for-tablet-layout {
     background-color: #1b1b1b;

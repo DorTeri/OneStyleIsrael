@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { getSvg } from '../services/svg.service'
 import { NavLink, useNavigate } from 'react-router-dom'
 
-function MainFilter({ onNavClick, onCancelClick }) {
+function MainFilter({ onNavClick, setShowInput }) {
   const brands = useSelector((storeState) => storeState.productsModule.brands)
   console.log(brands)
 
@@ -35,7 +35,7 @@ function MainFilter({ onNavClick, onCancelClick }) {
           onChange={handleInputChange}
         />
 
-        <span className="cancel" onClick={onCancelClick}>
+        <span className="cancel" onClick={() => setShowInput(false)}>
           Cancel
         </span>
       </div>
