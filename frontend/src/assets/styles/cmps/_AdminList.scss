@@ -8,10 +8,26 @@
         img {
             width: 100px;
             aspect-ratio: auto;
+            @include for-mobile-layout {
+                width: 70px;
+            }
         }
 
+        h3 {
+            place-self: center;
+            @include for-mobile-layout {
+                font-size: 12px;
+                max-width: fit-content;
+                text-align: center;
+            }
+        }
         h4 {
             place-self: center;
+            @include for-mobile-layout {
+                font-size: 10px;
+                max-width: fit-content;
+                text-align: center;
+            }
         }
 
         .actions {
@@ -22,6 +38,10 @@
                 svg {
                     width: 20px;
                     height: 20px;
+                    @include for-mobile-layout {
+                        width: 16px;
+                    height: 16px;
+                    }
                 }
             }
         }

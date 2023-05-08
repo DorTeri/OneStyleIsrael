@@ -11,7 +11,7 @@ export function AdminList({ products , onRemoveProduct}) {
             {products.map(p =>
                 <article key={p._id} className='admin-product-preview'>
                     <img src={p.url1} alt='Product image'/>
-                    <h4>{p.brand}</h4>
+                    <h3>{p.brand}</h3>
                     <h4>{p.model}</h4>
                     <h4>&#8362;{p.price}.00</h4>
                     <div className='actions flex align-center space-between'>
