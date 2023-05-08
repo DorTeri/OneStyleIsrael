@@ -68,8 +68,33 @@
     position: absolute;
     top: 20px;
     right: 20px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    &:hover {
+      .heart-icon {
+        svg {
+          transition: 0.1s;
+          scale: 1.06;
+          fill: rgb(0, 0, 0);
+          stroke:rgb(0, 0, 0);
+        }
+      }
+    }
     .heart-icon {
-      cursor: pointer;
+      svg {
+        fill: none;
+        stroke: #444444;
+      }
+      &.favorite {
+        svg {
+          fill: rgb(0, 0, 0);
+          stroke:rgb(0, 0, 0);
+        }
+      }
     }
   }
 }

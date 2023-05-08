@@ -10,7 +10,8 @@ export const userService = {
   getEmptyContact,
   updateUser,
   logout,
-  setLocalCart
+  setLocalCart,
+  toggleProductToFavorite
 }
 
 function getUser() {
@@ -50,6 +51,14 @@ async function removeFromCart(productId, user) {
   if (user._id) return await updateUser(user)
   else return updateLocalUser(user)
 }
+
+async function toggleProductToFavorite(product, user) {
+  console.log('user',user)
+    const productIdx = user.favorites.findIndex(p=>p._id===product._id) 
+    if(productIdx !== -1) user.favorites.splice(productIdx,1)
+    else user.favorites.push(product)
+    return await updateUser(user)
+} 
 
 function setLocalCart() {
   const user = {

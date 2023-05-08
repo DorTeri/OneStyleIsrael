@@ -74,6 +74,8 @@
       .heart-icon {
         padding-top: 8px;
         cursor: pointer;
+        fill: none;
+        stroke: #444444;
         @include for-mobile-layout {
           padding-top: 7.2px;
         }

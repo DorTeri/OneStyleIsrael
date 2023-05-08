@@ -13,6 +13,17 @@ export function addToCart(product) {
     }
 }
 
+export function toggleProductToFavorite(product) {
+    return async (dispatch, getState) => {
+        try {
+            const user = await userService.toggleProductToFavorite(product , getState().userModule.loggedInUser)
+            dispatch({ type: SET_USER, user })
+        } catch (error) {
+            console.log('error:', error)
+        }
+    }
+}
+
 export function removeFromCart(productId) {
     return async (dispatch, getState) => {
         try {

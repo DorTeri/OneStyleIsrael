@@ -3,10 +3,20 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { utilService } from '../services/util.service'
 import { getSvg } from '../services/svg.service'
+import { useSelector } from 'react-redux'
 
 
-export function ProductPreview({ product, onRemoveProduct }) {
+export function ProductPreview({ product, onRemoveProduct, toggleFavorites }) {
+  console.log('toggleFavorites', toggleFavorites)
   const navigate = useNavigate()
+  const user = useSelector((storeState) => storeState.userModule.loggedInUser)
+
+  function checkIfFavorite() {
+    if (!user._id) return
+    const productIdx = user.favorites.findIndex(p=>p._id===product._id) 
+    if(productIdx !== -1) return 'favorite'
+    return ''
+  }
 
   return (
     <article className="product-preview">
@@ -39,9 +49,9 @@ export function ProductPreview({ product, onRemoveProduct }) {
           &#8362; <span>{product.prevPrice}.00</span>
         </h5>
       </div>
-      <div className="icon-container">
+      <div className="icon-container" onClick={() => toggleFavorites(product)}>
                 <span
-                  className="heart-icon"
+                  className={`heart-icon ${checkIfFavorite()}`}
                   dangerouslySetInnerHTML={{
                     __html: getSvg('heart'),
                   }}
