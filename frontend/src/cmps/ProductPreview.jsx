@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux'
 
 
 export function ProductPreview({ product, onRemoveProduct, toggleFavorites }) {
-  console.log('toggleFavorites', toggleFavorites)
   const navigate = useNavigate()
   const user = useSelector((storeState) => storeState.userModule.loggedInUser)
 
