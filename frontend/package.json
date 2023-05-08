@@ -32,10 +32,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "build": {
-    "outDir": "../backend/public",
-    "assetsDir": "./dist"
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
