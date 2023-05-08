@@ -82,9 +82,9 @@ export function AppHeader() {
             <NavLink to='/favorites'>
               <div className="icon-container">
                 <span
-                  className="star-icon"
+                  className="heart-icon"
                   dangerouslySetInnerHTML={{
-                    __html: getSvg('star'),
+                    __html: getSvg('heart'),
                   }}
                 />
               </div>
