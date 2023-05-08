@@ -40,6 +40,11 @@ export function AppHeader() {
     else if (user.cart.length) return user.cart.length
   }
 
+  function getFavoritesCount() {
+    if (!user._id) return ''
+    else if (user.favorites.length) return user.favorites.length
+  }
+
   function openUserLogin() {
     if (user._id) navigate(`user/${user._id}`)
     else eventBus.emit('show-login', false)
@@ -87,6 +92,7 @@ export function AppHeader() {
                     __html: getSvg('heart'),
                   }}
                 />
+                <span className="favorites-count">{getFavoritesCount()}</span>
               </div>
             </NavLink>
             <NavLink to="/cart">

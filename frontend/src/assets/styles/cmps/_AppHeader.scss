@@ -34,10 +34,19 @@
       margin-left: 10px;
 
       .cart-count {
-        font-size: 11px;
+        font-size: 13px;
+        color: black;
         position: absolute;
-        top: 38%;
-        left: 30.5%;
+        top: 20px;
+        left: 32px;
+      }
+      .favorites-count {
+        font-size: 13px;
+        color: black;
+        position: absolute;
+        top: 20px;
+        right: 6px;
+    }
       }
     }
 
