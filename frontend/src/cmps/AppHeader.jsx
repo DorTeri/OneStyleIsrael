@@ -15,7 +15,6 @@ export function AppHeader() {
 
   const user = useSelector((storeState) => storeState.userModule.loggedInUser)
   const brands = useSelector((storeState) => storeState.productsModule.brands)
-  console.log(brands)
 
   const [showInput, setShowInput] = useState(false)
   const [showScreen, setShowScreen] = useState(false)
@@ -80,7 +79,7 @@ export function AppHeader() {
                 }}
               />
             </div>
-            <NavLink>
+            <NavLink to='/favorites'>
               <div className="icon-container">
                 <span
                   className="star-icon"

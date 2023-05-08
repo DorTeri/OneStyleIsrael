@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import { loadProducts, removeProduct, setFilterBy } from '../store/actions/products.actions'
 import { ProductList } from '../cmps/ProductList'
 import { Loader } from '../cmps/Loader'
-import { getSvg } from '../services/svg.service'
 
 export function ProductsPage() {
 
@@ -12,7 +11,6 @@ export function ProductsPage() {
     const filterBy = useSelector((storeState) => storeState.productsModule.filterBy)
 
     const [ctgs, setCtgs] = useState([])
-    const [showFilter , setShowFilter ] = useState(false)
     const [filter, setFilter] = useState({...filterBy})
 
     const params = useParams()

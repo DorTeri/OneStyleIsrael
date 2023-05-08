@@ -19,6 +19,7 @@ import { UserDetails } from './views/UserDetails';
 import { ShippingAdress } from './views/ShippingAdress';
 import { setLocalCart } from './store/actions/user.actions';
 import { NewFeatured } from  './views/NewFeatured';
+import { Favorites } from './views/Favorites';
 
 
 
@@ -49,6 +50,7 @@ function App() {
             <Route path="/user/:id" element={<UserDetails />} />
             <Route path="/shippingAddress" element={<ShippingAdress />} />
             <Route path="/newFeatured" element={<NewFeatured />} />
+            <Route path="/favorites" element={<Favorites />} />
           </Routes>
         </section>
         <AppFooter />

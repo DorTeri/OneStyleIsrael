@@ -148,7 +148,7 @@ export function Login() {
                     <label htmlFor="password">Password</label>
                     <input value={password} onChange={handleChange} type="password" name="password" id="password" placeholder='*******' />
                     {!isLogin && errors.password && <span className='error'>{errors.password}</span>}
-                    <button>{isLogin ? 'Login' : 'Signup'}</button>
+                    <button>{isLogin ? 'Sign In' : 'Sign Up'}</button>
                 </form>
                 <span className='or-auth'>OR</span>
                 <button className='btn-google' onClick={() => googleLogin()}>

@@ -1,0 +1,31 @@
+.favorites-section {
+
+    color: #222;
+
+    > h2 {
+        font-family: poppins-semibold;
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    .favorites-no-user ,  .no-favorites{
+        
+        margin-bottom: 50px;
+        
+        h4 {
+            font-family: poppins-light;
+            margin-bottom: 20px;
+        }
+
+        button {
+            height: 44px;
+            background-color: #222;
+            color: #fff;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            font-family: poppins-medium;
+            font-size: 1rem;
+        }
+    }
+}
