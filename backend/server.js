@@ -13,9 +13,9 @@ const http = require('http').createServer(app)
 app.use(bodyParser.json({limit: '50mb'}))
 app.use(cookieParser())
 app.use(express.json({limit: '50mb'}))
-app.use(express.static('public'))
+app.use(express.static('../frontend/build'))
 
-if ('production' === 'production') {
+if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, '../frontend/build')))
 } else {
     const corsOptions = {
