@@ -16,7 +16,7 @@ app.use(cookieParser())
 app.use(express.json({limit: '50mb'}))
 app.use(express.static(buildPath))
 
-if (process.env.NODE_ENV === 'production') {
+if ('production' === 'production') {
     app.use(express.static(path.resolve(__dirname, buildPath) ))
 } else {
     const corsOptions = {
