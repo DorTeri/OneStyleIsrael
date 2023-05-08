@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { utilService } from '../services/util.service'
+import { getSvg } from '../services/svg.service'
+
 
 export function ProductPreview({ product, onRemoveProduct }) {
   const navigate = useNavigate()
@@ -37,6 +39,14 @@ export function ProductPreview({ product, onRemoveProduct }) {
           &#8362; <span>{product.prevPrice}.00</span>
         </h5>
       </div>
+      <div className="icon-container">
+                <span
+                  className="heart-icon"
+                  dangerouslySetInnerHTML={{
+                    __html: getSvg('heart'),
+                  }}
+                />
+              </div>
     </article>
   )
 }
