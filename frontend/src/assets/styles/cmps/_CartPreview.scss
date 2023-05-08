@@ -3,6 +3,23 @@
     display: grid;
     grid-template-columns: 1.5fr 9fr 1fr;
     padding: 24px 0;
+    h3 {
+        @include for-mobile-layout {
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+    h4 {
+        @include for-mobile-layout {
+            font-size: 13px;
+        }
+    }
+    svg {
+        @include for-mobile-layout {
+            width: 15px;
+        }
+    }
+
 
     @include for-tablet-layout {
         grid-template-columns: 2fr 9fr 1fr;
@@ -17,8 +34,8 @@
         background-color: rgb(245, 245, 245);
         width: 100%;
         img {
-            padding-inline: 10%;
-            padding-bottom: 10%;
+            padding-inline: 3%;
+            padding-bottom: 3%;
             width: 100%;
             mix-blend-mode: multiply;
             aspect-ratio: auto;
@@ -31,7 +48,9 @@
 
         .trash-icon {
             cursor: pointer;
-            align-self: end;
+            display: flex;
+            align-items: center;
+            // justify-content: end;
             
             &:hover {
                 opacity: 0.6;
