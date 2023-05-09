@@ -2,9 +2,10 @@
   padding: 10px;
   z-index: 1000;
   align-self: baseline;
+
   @include for-normal-layout {
     display: block; 
-    min-height: 27vh;
+    // min-height: 27vh;
   }
   input {
     margin-bottom: 10px;

@@ -3,13 +3,15 @@ import { useSelector } from 'react-redux'
 import { getSvg } from '../services/svg.service'
 import { NavLink, useNavigate } from 'react-router-dom'
 
-function MainFilter({ onNavClick, setShowInput }) {
+function MainFilter({ onNavClick, setShowInput, onSearchQueryChange }) {
   const brands = useSelector((storeState) => storeState.productsModule.brands)
 
   const [searchQuery, setSearchQuery] = useState('')
 
   const handleInputChange = (event) => {
-    setSearchQuery(event.target.value)
+    const query = event.target.value
+    setSearchQuery(query)
+    onSearchQueryChange(query)
   }
 
   const boldify = (text) => {
