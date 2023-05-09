@@ -72,10 +72,10 @@ export function NavScreen({ showScreen, setShowScreen }) {
                 </nav>
                 <div className='login-section'>
                     <h2>MY ACCOUNT</h2>
-                    {!user && <button className='sign-in' onClick={() => openLogin(true)}>
+                    {!user._id && <button className='sign-in' onClick={() => openLogin(true)}>
                         Sign in
                     </button>}
-                    {!user && <button className='register' onClick={() => openLogin(false)}>
+                    {!user._id && <button className='register' onClick={() => openLogin(false)}>
                         Register
                     </button>}
                     {user && <div className='flex align-center space-between'>
