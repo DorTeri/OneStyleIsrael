@@ -22,8 +22,6 @@ export function NewFeatured() {
     dispatch(loadProducts())
   }, [dispatch])
 
-  console.log(products ,'from newFeatured')
-
   return (
     <div className="new-featured-container">
       <h1>New Products</h1>

@@ -45,8 +45,15 @@ export function AppHeader() {
   }
 
   function openUserLogin() {
-    if (user._id) navigate(`user/${user._id}`)
-    else eventBus.emit('show-login', false)
+    if (user._id) {
+      if (user.isAdmin) {
+        navigate('/admin')
+      } else {
+        navigate(`user/${user._id}`)
+      }
+    } else {
+      eventBus.emit('show-login', false)
+    }
   }
 
   return (

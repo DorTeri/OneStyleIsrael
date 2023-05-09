@@ -1,20 +1,34 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink,useNavigate } from 'react-router-dom'
 import { getSvg } from '../services/svg.service'
 import { useSelector } from 'react-redux'
 import { HeaderExpand } from './HeaderExpand'
 import { eventBus } from '../services/event-bus.service'
 import { Loader } from './Loader'
 
+
 export function NavScreen({ showScreen, setShowScreen }) {
 
     const user = useSelector((storeState) => storeState.userModule.loggedInUser)
     const brands = useSelector((storeState) => storeState.productsModule.brands)
+    const navigate = useNavigate()
 
     function openLogin(isLogin) {
         eventBus.emit('show-login', isLogin)
         setShowScreen(false)
     }
+
+    function openUserLogin() {
+        if (user._id) {
+          if (user.isAdmin) {
+            navigate('/admin')
+          } else {
+            navigate(`user/${user._id}`)
+          }
+        } else {
+          eventBus.emit('show-login', false)
+        }
+      }
 
     if(!user) return <Loader />
     return (
@@ -31,7 +45,7 @@ export function NavScreen({ showScreen, setShowScreen }) {
                     />
                 </div>
                 <nav className="header-links">
-                    <NavLink to='/' className='flex align-center space-between'>
+                    <NavLink to='/newFeatured' className='flex align-center space-between'>
                         <span className="featured">New & Featured</span>
                         <span className='arrow-icon'
                             dangerouslySetInnerHTML={{
@@ -80,8 +94,8 @@ export function NavScreen({ showScreen, setShowScreen }) {
                     {!user._id && <button className='register' onClick={() => openLogin(false)}>
                         Register
                     </button>}
-                    {user && <div className='flex align-center space-between'>
-                        <div className='flex align-center'>
+                    {user && <div className='flex align-center space-between mobile-user'>
+                        <div onClick={() => openUserLogin()} className='flex align-center'>
                             <span className="user-icon"
                                 dangerouslySetInnerHTML={{
                                     __html: getSvg('user'),

@@ -20,6 +20,7 @@ function getUser() {
 
 async function login(userCred) {
   const user = await httpService.post('auth/login', userCred)
+  console.log(user)
   return user
 }
 
