@@ -1,7 +1,6 @@
 {
   "name": "mutagim",
   "version": "0.1.0",
-  "homepage": "https://DorTeri.github.io/OneStyleIsrael",
   "private": true,
   "dependencies": {
     "@react-oauth/google": "^0.11.0",
