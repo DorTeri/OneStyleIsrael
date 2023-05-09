@@ -8,32 +8,26 @@ import {
 } from '../store/actions/products.actions'
 import { ProductList } from '../cmps/ProductList'
 
+
 export function NewFeatured() {
+  const filterBy = useSelector((storeState) => storeState.productsModule.filterBy)
+  const dispatch = useDispatch()
   const products = useSelector(
     (storeState) => storeState.productsModule.products
-  )
-
-  const [ctgs, setCtgs] = useState([])
+    )
+    
 
   useEffect(() => {
-    setCtgs(setBrandCtgs())
-  }, [products])
+    dispatch(setFilterBy({ ...filterBy, brand: 'new' }))
+    dispatch(loadProducts())
+  }, [dispatch])
 
-  function setBrandCtgs() {
-    if (!products || !Array.isArray(products)) return
-
-    const oneWeekAgo = Date.now() - 604800000 // 604800000 ms = 1 week
-    const filteredProducts = products.filter((p) => p.createdAt >= oneWeekAgo)
-
-    return filteredProducts.reduce((acc, p) => {
-      if (!acc.includes(p.ctg)) acc.push(p.ctg)
-      return acc
-    }, [])
-  }
+  console.log(products ,'from newFeatured')
 
   return (
-    <section className="products-page">
-      {ctgs && ctgs.length > 0 && ctgs.map((c) => <ProductList key={c} products={setBrandCtgs} />)}
-    </section>
+    <div className="new-featured-container">
+      <h1>New Products</h1>
+      <ProductList products={products} />
+    </div>
   )
 }

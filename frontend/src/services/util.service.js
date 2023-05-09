@@ -37,7 +37,8 @@ function getRandomImg() {
 }
 
 function capFirstLetter(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1)
+  if (!str || typeof str.charAt !== 'function') return '';
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 function makeId(length = 8) {

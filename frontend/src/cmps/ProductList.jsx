@@ -6,6 +6,7 @@ import { utilService } from '../services/util.service'
 export function ProductList({ products, onRemoveProduct, title, toggleFavorites }) {
 
     const navigate = useNavigate()
+    console.log(products ,'from list')
 
     if (!products) return <div>Loading...</div>
     return (
