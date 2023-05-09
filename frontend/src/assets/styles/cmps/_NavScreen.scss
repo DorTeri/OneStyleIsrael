@@ -1,5 +1,6 @@
 .nav-screen {
     position: relative;
+
     @include for-mobile-layout {
         // padding: 0 50px;
     }
@@ -11,6 +12,7 @@
         width: 43%;
         height: 100vh;
         z-index: 10;
+
         @include for-mobile-layout {
             width: auto;
         }
@@ -18,19 +20,24 @@
         .nav-content-header {
             padding-inline: 8px;
             box-shadow: rgb(229, 229, 229) 0px 0px 0px 0px inset, rgb(229, 229, 229) 0px 0px 0px 0px inset, rgb(229, 229, 229) 0px -1px 0px 0px inset, rgb(229, 229, 229) 0px 0px 0px 0px inset;
-       h2 {
-        font-size: 22px;
-        @include for-mobile-layout {
-            font-size: 20px;
-        }
-       }
+
+            h2 {
+                font-size: 22px;
+
+                @include for-mobile-layout {
+                    font-size: 20px;
+                }
+            }
+
             span {
                 cursor: pointer;
                 height: 24px;
+
                 svg {
                     width: 24px;
                     height: 24px;
                     fill: rgb(71, 71, 71);
+
                     @include for-mobile-layout {
                         width: 20px;
                         margin-left: 7px;
@@ -43,7 +50,7 @@
             padding-top: 20px;
             display: grid;
 
-            > * {
+            >* {
                 position: relative;
                 padding: 10px;
                 text-decoration: none;
@@ -84,6 +91,7 @@
                 font-size: 1rem;
                 border-radius: 6px;
                 border-width: 1px;
+                margin: 0 0;
 
                 &:hover {
                     opacity: .6;
@@ -93,6 +101,19 @@
             .sign-in {
                 background-color: #000;
                 color: #fff;
+            }
+
+            .register {
+                border: .11rem solid #222;
+            }
+
+            .user-icon {
+                margin-inline-end: 5px;
+                height: 24px;
+                svg {
+                    width: 24px;
+                    height: 24px;
+                }
             }
         }
     }

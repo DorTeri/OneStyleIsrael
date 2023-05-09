@@ -4,6 +4,7 @@ import { getSvg } from '../services/svg.service'
 import { useSelector } from 'react-redux'
 import { HeaderExpand } from './HeaderExpand'
 import { eventBus } from '../services/event-bus.service'
+import { Loader } from './Loader'
 
 export function NavScreen({ showScreen, setShowScreen }) {
 
@@ -15,6 +16,7 @@ export function NavScreen({ showScreen, setShowScreen }) {
         setShowScreen(false)
     }
 
+    if(!user) return <Loader />
     return (
         <section className={`nav-screen ${showScreen ? 'open' : ''}`}>
             <div className='nav-content'>
@@ -72,14 +74,14 @@ export function NavScreen({ showScreen, setShowScreen }) {
                 </nav>
                 <div className='login-section'>
                     <h2>MY ACCOUNT</h2>
-                    {!user && <button className='sign-in' onClick={() => openLogin(true)}>
+                    {!user._id && <button className='sign-in' onClick={() => openLogin(true)}>
                         Sign in
                     </button>}
-                    {!user && <button className='register' onClick={() => openLogin(false)}>
+                    {!user._id && <button className='register' onClick={() => openLogin(false)}>
                         Register
                     </button>}
                     {user && <div className='flex align-center space-between'>
-                        <div>
+                        <div className='flex align-center'>
                             <span className="user-icon"
                                 dangerouslySetInnerHTML={{
                                     __html: getSvg('user'),
