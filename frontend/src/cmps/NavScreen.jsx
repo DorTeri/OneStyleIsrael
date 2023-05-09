@@ -4,6 +4,7 @@ import { getSvg } from '../services/svg.service'
 import { useSelector } from 'react-redux'
 import { HeaderExpand } from './HeaderExpand'
 import { eventBus } from '../services/event-bus.service'
+import { Loader } from './Loader'
 
 export function NavScreen({ showScreen, setShowScreen }) {
 
@@ -15,6 +16,7 @@ export function NavScreen({ showScreen, setShowScreen }) {
         setShowScreen(false)
     }
 
+    if(!user) return <Loader />
     return (
         <section className={`nav-screen ${showScreen ? 'open' : ''}`}>
             <div className='nav-content'>
