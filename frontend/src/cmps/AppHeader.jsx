@@ -169,7 +169,7 @@ export function AppHeader() {
           </section>
         )}
       </section>
-      {query !== '' && <div className="modal-background"></div>}
+      {query !== '' && <div className="filter-modal-background"></div>}
     </>
   )
 }
