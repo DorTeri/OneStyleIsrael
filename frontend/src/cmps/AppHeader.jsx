@@ -19,7 +19,7 @@ export function AppHeader() {
   const [showInput, setShowInput] = useState(false)
   const [showScreen, setShowScreen] = useState(false)
 
-  const headerHeight = showInput ? '100vh' : 'auto'
+  const headerHeight = showInput ? '35vh' : 'auto'
 
   function onNavClick(path) {
     const filterBy = {
@@ -59,7 +59,7 @@ export function AppHeader() {
   return (
     <>
       <div className="new-sale full">מבצעים חדשים נחתו באתר</div>
-      <section className="header-section full" style={{ height: headerHeight }}>
+      <section className="header-section full">
         <NavScreen showScreen={showScreen} setShowScreen={setShowScreen} />
         <section className="header-nav-content">
           <div className="mobile-icons">
@@ -114,7 +114,7 @@ export function AppHeader() {
             </NavLink>
           </div>
         </section>
-        <div className="header-nav flex align-center justify-center">
+        <div className="header-nav flex align-center justify-center" style={{ height: headerHeight }}>
           {!showInput ? (
             <nav className="header-links">
               <NavLink to="/newFeatured">

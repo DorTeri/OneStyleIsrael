@@ -2,6 +2,7 @@ import React from 'react'
 import { getSvg } from '../services/svg.service'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import {utilService} from '../services/util.service'
 
 export function CartPreview({ product , onRemoveProduct }) {
 
@@ -15,7 +16,7 @@ export function CartPreview({ product , onRemoveProduct }) {
             </div>
             <div className='product-info'>
                 <div>
-                    <NavLink to={`/${product.brand}`}><h3>{product.brand}</h3></NavLink>
+                    <NavLink to={`/${product.brand}`}><h3>{utilService.capFirstLetter(product.brand)}</h3></NavLink>
                     <h4>{product.model}</h4>
                     <h4>Size {product.size}</h4>
                 </div>

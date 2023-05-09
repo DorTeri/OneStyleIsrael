@@ -44,7 +44,7 @@
           left: 8.5px;
           top: 15.7px;
           font-size: 11px;
-      }
+        }
       }
 
       .favorites-count {
@@ -135,7 +135,7 @@
   }
 
   .header-links {
-    &>* {
+    & > * {
       margin-inline-end: 65px;
     }
 
@@ -231,7 +231,7 @@
       margin-top: 8px;
     }
 
-    >* {
+    > * {
       padding-inline-start: 10px;
       display: none;
 
