@@ -6,21 +6,16 @@ const ObjectId = require('mongodb').ObjectId
 async function query(filterBy) {
   try {
     const collection = await dbService.getCollection('product')
-    const currentDate = new Date()
-    const oneMonthAgo = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth() - 1,
-      currentDate.getDate()
-    )
+
+    const oneMonthAgo = Math.floor(Date.now() / 1000) - 200000
+    // console.log(oneMonthAgo)
+    console.log(filterBy.brand)
     if (filterBy.brand === 'new')
-  var products = await collection
-    .find({
-      $or: [
-        { createdAt: { $gte: oneMonthAgo } },
-        { createdAt: { $gte: currentDate } }
-      ]
-    })
-    .toArray()
+      var products = await collection
+        .find({
+          createdAt: { $gte: oneMonthAgo },
+        })
+        .toArray()
     else if (filterBy.brand === 'all')
       var products = await collection.find().toArray()
     else if (filterBy.brand)
@@ -47,7 +42,7 @@ async function query(filterBy) {
         return acc
       }, {})
     }
-    console.log(products ,'from backend')
+    console.log(products, 'from backend')
     return products
   } catch (err) {
     logger.error('cannot find products', err)
