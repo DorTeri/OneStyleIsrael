@@ -132,6 +132,10 @@ export function AppHeader() {
                   brand={'new balance'}
                 />
               </NavLink>
+              <NavLink to="/just don">
+                Just Don
+                <HeaderExpand ctgs={brands['just don']} brand={'just don'} />
+              </NavLink>
             </nav>
           ) : (
             <MainFilter setShowInput={setShowInput} onNavClick={onNavClick} />
