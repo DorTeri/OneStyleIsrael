@@ -1,11 +1,10 @@
 import React from 'react'
 import { FavortiesPreview } from './FavortiesPreview'
 
-export function FavoritesList({ favorites }) {
+export function FavoritesList({ favorites , removeFromFavorites }) {
     return (
         <section className='favorites-list'>
-            FavoritesList
-            {favorites.map(f => <FavortiesPreview key={f._id} favorite={f}/>)}
+            {favorites.map(f => <FavortiesPreview removeFromFavorites={removeFromFavorites} key={f._id} favorite={f}/>)}
         </section>
     )
 }

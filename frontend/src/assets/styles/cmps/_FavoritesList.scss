@@ -1,0 +1,46 @@
+.favorites-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    .product-preview {
+
+        img {
+            aspect-ratio: auto;
+        }
+
+        >.icon-container {
+            display: none;
+        }
+
+        .price-wrapper {
+
+            >:last-child {
+                display: none;
+            }
+        }
+
+        .remove-container {
+            display: block;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 8px;
+            padding-bottom: 0;
+            border-radius: 4px;
+            cursor: pointer;
+
+            span {
+                height: 24px;
+
+                svg {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+
+            &:hover {
+                background-color: #f5f5f5;
+            }
+        }
+    }
+}

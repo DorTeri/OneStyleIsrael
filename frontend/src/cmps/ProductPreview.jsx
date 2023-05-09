@@ -6,14 +6,14 @@ import { getSvg } from '../services/svg.service'
 import { useSelector } from 'react-redux'
 
 
-export function ProductPreview({ product, onRemoveProduct, toggleFavorites }) {
+export function ProductPreview({ product, onRemoveProduct, toggleFavorites , removeFromFavorites }) {
   const navigate = useNavigate()
   const user = useSelector((storeState) => storeState.userModule.loggedInUser)
 
   function checkIfFavorite() {
     if (!user._id) return
-    const productIdx = user.favorites.findIndex(p=>p._id===product._id) 
-    if(productIdx !== -1) return 'favorite'
+    const productIdx = user.favorites.findIndex(p => p._id === product._id)
+    if (productIdx !== -1) return 'favorite'
     return ''
   }
 
@@ -49,13 +49,21 @@ export function ProductPreview({ product, onRemoveProduct, toggleFavorites }) {
         </h5>
       </div>
       <div className="icon-container" onClick={() => toggleFavorites(product)}>
-                <span
-                  className={`heart-icon ${checkIfFavorite()}`}
-                  dangerouslySetInnerHTML={{
-                    __html: getSvg('heart'),
-                  }}
-                />
-              </div>
+        <span
+          className={`heart-icon ${checkIfFavorite()}`}
+          dangerouslySetInnerHTML={{
+            __html: getSvg('heart'),
+          }}
+        />
+      </div>
+      <div className="remove-container" onClick={() => removeFromFavorites(product)}>
+        <span
+          className={`x-icon`}
+          dangerouslySetInnerHTML={{
+            __html: getSvg('x'),
+          }}
+        />
+      </div>
     </article>
   )
 }

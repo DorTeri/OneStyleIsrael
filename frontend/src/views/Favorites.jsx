@@ -1,14 +1,20 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { eventBus } from '../services/event-bus.service'
 import { FavoritesList } from '../cmps/FavoritesList'
 import { useNavigate } from 'react-router-dom'
+import { toggleProductToFavorite } from '../store/actions/user.actions'
 
 export function Favorites() {
 
     const user = useSelector((storeState) => storeState.userModule.loggedInUser)
 
+    const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    function removeFromFavorites(product) {
+        dispatch(toggleProductToFavorite(product))
+    }
 
     return (
         <section className='favorites-section'>
@@ -26,7 +32,10 @@ export function Favorites() {
                             <button onClick={() => navigate('/')}>Shop Now</button>
                         </div>
                         :
-                        <FavoritesList favorites={user.favorites} />
+                        <>
+                            <h3>{user.favorites.length} {user.favorites.length > 1 ? 'items' : 'item'}</h3>
+                            <FavoritesList favorites={user.favorites} removeFromFavorites={removeFromFavorites}/>
+                        </>
                 )
             }
         </section>
