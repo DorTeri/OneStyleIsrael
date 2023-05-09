@@ -81,7 +81,7 @@ export function NavScreen({ showScreen, setShowScreen }) {
                         Register
                     </button>}
                     {user && <div className='flex align-center space-between'>
-                        <div>
+                        <div className='flex align-center'>
                             <span className="user-icon"
                                 dangerouslySetInnerHTML={{
                                     __html: getSvg('user'),
