@@ -1,6 +1,7 @@
 import React from 'react'
 import { getSvg } from '../services/svg.service'
 import { useNavigate } from 'react-router-dom'
+import { utilService } from '../services/util.service'
 
 export function AdminList({ products , onRemoveProduct}) {
 
@@ -11,7 +12,7 @@ export function AdminList({ products , onRemoveProduct}) {
             {products.map(p =>
                 <article key={p._id} className='admin-product-preview'>
                     <img src={p.url1} alt='Product image'/>
-                    <h3>{p.brand}</h3>
+                    <h3>{utilService.capFirstLetter(p.brand)}</h3>
                     <h4>{p.model}</h4>
                     <h4>&#8362;{p.price}.00</h4>
                     <div className='actions flex align-center space-between'>

@@ -20,6 +20,7 @@
   top: 0;
   z-index: 998;
   background: white;
+  animation: opacity-delay .2s;
 
   &.isInput {
     width: 100%;

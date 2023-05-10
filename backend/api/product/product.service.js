@@ -8,8 +8,7 @@ async function query(filterBy) {
     const collection = await dbService.getCollection('product')
 
     const oneMonthAgo = Math.floor(Date.now() / 1000) - 200000
-    // console.log(oneMonthAgo)
-    console.log(filterBy.brand)
+
     if (filterBy.brand === 'new')
       var products = await collection
         .find({
