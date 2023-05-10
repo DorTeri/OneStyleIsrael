@@ -1,41 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { userService } from '../services/user.service'
-import { useForm } from '../customHooks/useForm'
+import { PaymentHeader } from '../cmps/PaymentHeader'
 
 export function PaymentComponent() {
 
     const user = useSelector((storeState) => storeState.userModule.loggedInUser)
 
-    const [amount, setAmount] = useState("")
-    const [currency, setCurrency] = useState("")
-    const [cardNumber, setCardNumber] = useState("")
-    const [cardName, setCardName] = useState("")
-    const [expirationMonth, setExpirationMonth] = useState("")
-    const [expirationYear, setExpirationYear] = useState("")
-    const [cvv, setCvv] = useState("")
-
-    const [cardInfo, handleChange, setCardInfo, handleSubmit, errors] = useForm(
-        userService.getEmptyContact(),
-        submit,
-        validate
-    )
-
-    const [responseMessage, setResponseMessage] = useState("")
+    const [amount, setAmount] = useState('')
 
     const deliveryPrice = 50
 
     useEffect(() => {
         setAmount(getTotal())
     }, [])
-
-    function submit() {
-        console.log('submit')
-    }
-
-    function validate() {
-        console.log('validate')
-    }
 
     function getTotal() {
         return user.cart.reduce((acc, p) => {
@@ -47,7 +24,9 @@ export function PaymentComponent() {
 
     return (
         <section className='payment-section'>
-            PaymentComponent
+            <PaymentHeader />
+            <h2>CARD DETAILS</h2>
+            <iframe src="https://sandbox.meshulam.co.il/payment-form?apiKey=[your_api_key]&subscriptionId=[your_subscription_id]&email=[customer_email]&amount=[transaction_amount]" width="100%" height="800" frameborder="0"></iframe>
         </section>
     )
 }

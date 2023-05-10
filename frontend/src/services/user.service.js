@@ -12,7 +12,6 @@ export const userService = {
   logout,
   setLocalCart,
   toggleProductToFavorite,
-  getEmptyCard
 }
 
 function getUser() {
@@ -21,7 +20,6 @@ function getUser() {
 
 async function login(userCred) {
   const user = await httpService.post('auth/login', userCred)
-  console.log(user)
   return user
 }
 
@@ -97,17 +95,5 @@ function getEmptyContact() {
     city: '',
     postal: '',
     phone: '',
-  }
-}
-
-function getEmptyCard() {
-  return {
-    amount: '',
-    amount: '',
-    amount: '',
-    amount: '',
-    amount: '',
-    amount: '',
-    amount: '',
   }
 }

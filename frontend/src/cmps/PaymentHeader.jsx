@@ -29,11 +29,11 @@ export function PaymentHeader() {
 
     return (
         <div className='payment-header'>
-            <div className={`${(currPath === 'shipping') ? 'active' : ''}`}>
+            <div className={`active`}>
                 <span>1. Delivery</span>
                 <div className='bar'></div>
             </div>
-            <div className={`${(currPath === 'payment') ? 'active' : ''}`}>
+            <div className={`${(currPath === 'payment' || currPath === 'review') ? 'active' : ''}`}>
                 <span>2. Payment</span>
                 <div className='bar'></div>
             </div>
