@@ -59,7 +59,7 @@ export function NavScreen({ showScreen, setShowScreen }) {
                                 __html: getSvg('arrowRight'),
                             }}>
                         </span>
-                        <HeaderExpand ctgs={brands['adidas']} brand={'adidas'} />
+                        <HeaderExpand setShowScreen={setShowScreen} ctgs={brands['adidas']} brand={'adidas'} />
                     </NavLink >
                     <NavLink to='/nike' className='flex align-center space-between'>Nike
                         <span className='arrow-icon'
@@ -67,7 +67,7 @@ export function NavScreen({ showScreen, setShowScreen }) {
                                 __html: getSvg('arrowRight'),
                             }}>
                         </span>
-                        <HeaderExpand ctgs={brands['nike']} brand={'nike'} />
+                        <HeaderExpand setShowScreen={setShowScreen} ctgs={brands['nike']} brand={'nike'} />
                     </NavLink>
                     <NavLink to='/jordan' className='flex align-center space-between'>Jordan
                         <span className='arrow-icon'
@@ -75,7 +75,7 @@ export function NavScreen({ showScreen, setShowScreen }) {
                                 __html: getSvg('arrowRight'),
                             }}>
                         </span>
-                        <HeaderExpand ctgs={brands['jordan']} brand={'jordan'} />
+                        <HeaderExpand setShowScreen={setShowScreen} ctgs={brands['jordan']} brand={'jordan'} />
                     </NavLink>
                     <NavLink to='/new balance' className='flex align-center space-between'>New Balance
                         <span className='arrow-icon'
@@ -83,7 +83,7 @@ export function NavScreen({ showScreen, setShowScreen }) {
                                 __html: getSvg('arrowRight'),
                             }}>
                         </span>
-                        <HeaderExpand ctgs={brands['new balance']} brand={'new balance'} />
+                        <HeaderExpand setShowScreen={setShowScreen} ctgs={brands['new balance']} brand={'new balance'} />
                     </NavLink>
                 </nav>
                 <div className='login-section'>
