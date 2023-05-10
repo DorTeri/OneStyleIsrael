@@ -26,22 +26,30 @@ export function ProductPreview({ product, toggleFavorites , removeFromFavorites 
 
   return (
     <article className="product-preview">
+        <div className="icon-container" onClick={() => toggleFavorites(product)}>
+        {isNewProduct() ? <span className="new">NEW</span> : <span></span>  }
+        <span
+          className={`heart-icon ${checkIfFavorite()}`}
+          dangerouslySetInnerHTML={{
+            __html: getSvg('heart'),
+          }}
+        />
+      </div>
       <div
         className="product-wrapper"
         onClick={() => navigate(`/details/${product._id}`)}
-      >
+        >
         <img
           className="product-img img-bottom"
           src={product.url1}
           alt="Product image"
-        />
+          />
         <img
           className="product-img img-top"
           src={product.url2}
           alt="Product image"
-        />
+          />
       </div>
-        {isNewProduct() && <span className="new"> NEW</span>}
       <NavLink to={product.brand} className="brand">
         {utilService.capFirstLetter(product.brand)}
       </NavLink>
@@ -55,14 +63,6 @@ export function ProductPreview({ product, toggleFavorites , removeFromFavorites 
         <h5>
           &#8362; <span>{product.prevPrice}.00</span>
         </h5>
-      </div>
-      <div className="icon-container" onClick={() => toggleFavorites(product)}>
-        <span
-          className={`heart-icon ${checkIfFavorite()}`}
-          dangerouslySetInnerHTML={{
-            __html: getSvg('heart'),
-          }}
-        />
       </div>
       <div className="remove-container" onClick={() => removeFromFavorites(product)}>
         <span
