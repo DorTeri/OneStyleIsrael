@@ -11,7 +11,8 @@ export const userService = {
   updateUser,
   logout,
   setLocalCart,
-  toggleProductToFavorite
+  toggleProductToFavorite,
+  getEmptyCard
 }
 
 function getUser() {
@@ -96,5 +97,17 @@ function getEmptyContact() {
     city: '',
     postal: '',
     phone: '',
+  }
+}
+
+function getEmptyCard() {
+  return {
+    amount: '',
+    amount: '',
+    amount: '',
+    amount: '',
+    amount: '',
+    amount: '',
+    amount: '',
   }
 }

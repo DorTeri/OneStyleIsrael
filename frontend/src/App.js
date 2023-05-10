@@ -20,6 +20,7 @@ import { ShippingAdress } from './views/ShippingAdress';
 import { setLocalCart } from './store/actions/user.actions';
 import { NewFeatured } from  './views/NewFeatured';
 import { Favorites } from './views/Favorites';
+import { PaymentComponent } from './views/PaymentComponent';
 
 
 
@@ -49,6 +50,7 @@ function App() {
             <Route path="/edit/:id?" element={<ProductEdit />} />
             <Route path="/user/:id" element={<UserDetails />} />
             <Route path="/shippingAddress" element={<ShippingAdress />} />
+            <Route path="/payment" element={<PaymentComponent />} />
             <Route path="/newFeatured" element={<NewFeatured />} />
             <Route path="/favorites" element={<Favorites />} />
           </Routes>
