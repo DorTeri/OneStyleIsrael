@@ -26,7 +26,7 @@ export function ShippingAdress() {
         const userToUpdate = JSON.parse(JSON.stringify(user))
         userToUpdate.contact = userContact
         dispatch(updateUser(userToUpdate))
-        // navigate('')
+        navigate('/payment')
     }
 
     function getTotal() {

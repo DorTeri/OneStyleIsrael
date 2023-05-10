@@ -15,6 +15,7 @@
 @import 'basics/animations';
 
 // Views
+@import 'views/PaymentCmp';
 @import 'views/Admin';
 @import 'views/Cart';
 @import 'views/Favorites';
@@ -26,6 +27,7 @@
 @import 'views/UserDetails';
 
 // Components
+@import 'cmps/Card';
 @import 'cmps/AppHeader';
 @import 'cmps/FavoritesList';
 @import 'cmps/CheckoutPreview';

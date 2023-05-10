@@ -6,7 +6,7 @@ import { getSvg } from '../services/svg.service'
 import { useSelector } from 'react-redux'
 
 
-export function ProductPreview({ product, onRemoveProduct, toggleFavorites , removeFromFavorites }) {
+export function ProductPreview({ product, toggleFavorites , removeFromFavorites }) {
   const navigate = useNavigate()
   const user = useSelector((storeState) => storeState.userModule.loggedInUser)
 
@@ -15,6 +15,13 @@ export function ProductPreview({ product, onRemoveProduct, toggleFavorites , rem
     const productIdx = user.favorites.findIndex(p => p._id === product._id)
     if (productIdx !== -1) return 'favorite'
     return ''
+  }
+
+  function isNewProduct() {
+    const oneWeekAgo = new Date()
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7)
+    const productDate = new Date(product.createdAt)
+    return productDate >= oneWeekAgo
   }
 
   return (
@@ -34,6 +41,7 @@ export function ProductPreview({ product, onRemoveProduct, toggleFavorites , rem
           alt="Product image"
         />
       </div>
+        {isNewProduct() && <span className="new"> NEW</span>}
       <NavLink to={product.brand} className="brand">
         {utilService.capFirstLetter(product.brand)}
       </NavLink>
