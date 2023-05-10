@@ -15,11 +15,12 @@ export function AppHeader() {
 
   const user = useSelector((storeState) => storeState.userModule.loggedInUser)
   const brands = useSelector((storeState) => storeState.productsModule.brands)
-
+  const [query, setQuery] = useState('')
   const [showInput, setShowInput] = useState(false)
   const [showScreen, setShowScreen] = useState(false)
 
   const headerHeight = showInput ? '35vh' : 'auto'
+
 
   function onNavClick(path) {
     const filterBy = {
@@ -56,10 +57,15 @@ export function AppHeader() {
     }
   }
 
+  function QueryChange(query) {
+    console.log(query);
+    setQuery(query)
+  }
+
   return (
     <>
       <div className="new-sale full">מבצעים חדשים נחתו באתר</div>
-      <section className="header-section full">
+      <section  className={`header-section full ${query !== '' ? 'isInput' : ''}`}>
         <NavScreen showScreen={showScreen} setShowScreen={setShowScreen} />
         <section className="header-nav-content">
           <div className="mobile-icons">
@@ -114,7 +120,7 @@ export function AppHeader() {
             </NavLink>
           </div>
         </section>
-        <div className="header-nav flex align-center justify-center" style={{ height: headerHeight }}>
+        <div className="header-nav flex align-center justify-center">
           {!showInput ? (
             <nav className="header-links">
               <NavLink to="/newFeatured">
@@ -145,7 +151,7 @@ export function AppHeader() {
               </NavLink>
             </nav>
           ) : (
-            <MainFilter setShowInput={setShowInput} onNavClick={onNavClick} />
+            <MainFilter setShowInput={setShowInput} onNavClick={onNavClick} onSearchQueryChange={QueryChange} />
           )}
           {!showInput ? (
             <span
@@ -159,10 +165,11 @@ export function AppHeader() {
         </div>
         {showInput && (
           <section className="mobile-main-filter">
-            <MainFilter setShowInput={setShowInput} onNavClick={onNavClick} />
+            <MainFilter setShowInput={setShowInput} onNavClick={onNavClick} onSearchQueryChange={QueryChange} />
           </section>
         )}
       </section>
+      {query !== '' && <div className="filter-modal-background"></div>}
     </>
   )
 }

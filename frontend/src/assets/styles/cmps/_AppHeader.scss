@@ -18,8 +18,14 @@
   color: #222;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 998;
   background: white;
+
+  &.isInput {
+    width: 100%;
+    position: fixed;
+  } 
+
   @include for-tablet-layout {
     padding: 0;
   }
@@ -257,4 +263,14 @@
   margin-left: 10px;
   font-size: 14px;
   cursor: pointer;
+}
+
+.filter-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 997;
 }
