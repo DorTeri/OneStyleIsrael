@@ -3,6 +3,7 @@
   z-index: 1000;
   align-self: baseline;
   margin-top: -8.5px;
+  animation: opacity-delay .2s;
 
   @include for-normal-layout {
     display: block; 
