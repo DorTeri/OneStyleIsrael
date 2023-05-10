@@ -128,26 +128,27 @@ export function AppHeader() {
               </NavLink>
               <NavLink to="/adidas">
                 Adidas
-                <HeaderExpand ctgs={brands['adidas']} brand={'adidas'} />
+                <HeaderExpand ctgs={brands['adidas']} brand={'adidas'} setShowScreen={setShowScreen}/>
               </NavLink>
               <NavLink to="/nike">
                 Nike
-                <HeaderExpand ctgs={brands['nike']} brand={'nike'} />
+                <HeaderExpand ctgs={brands['nike']} brand={'nike'} setShowScreen={setShowScreen}/>
               </NavLink>
               <NavLink to="/jordan">
                 Jordan
-                <HeaderExpand ctgs={brands['jordan']} brand={'jordan'} />
+                <HeaderExpand ctgs={brands['jordan']} brand={'jordan'} setShowScreen={setShowScreen}/>
               </NavLink>
               <NavLink to="/new balance">
                 New Balance
                 <HeaderExpand
                   ctgs={brands['new balance']}
                   brand={'new balance'}
+                  setShowScreen={setShowScreen}
                 />
               </NavLink>
               <NavLink to="/just don">
                 Just Don
-                <HeaderExpand ctgs={brands['just don']} brand={'just don'} />
+                <HeaderExpand ctgs={brands['just don']} brand={'just don'} setShowScreen={setShowScreen} />
               </NavLink>
             </nav>
           ) : (
