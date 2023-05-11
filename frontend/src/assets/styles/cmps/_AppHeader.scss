@@ -25,7 +25,7 @@
   &.isInput {
     width: 100%;
     position: fixed;
-  } 
+  }
 
   @include for-tablet-layout {
     padding: 0;
@@ -47,10 +47,11 @@
         position: absolute;
         top: 20px;
         left: 32px;
+
         @include for-mobile-layout {
-          left: 8.5px;
-          top: 15.7px;
-          font-size: 11px;
+          left: 21.5px;
+          top: 19.7px;
+          font-size: 12px;
         }
       }
 
@@ -60,6 +61,12 @@
         position: absolute;
         top: 20px;
         right: 6px;
+
+        @include for-mobile-layout {
+          left: 20.5px;
+          top: 19.7px;
+          font-size: 12px;
+        }
       }
     }
   }
@@ -142,7 +149,7 @@
   }
 
   .header-links {
-    & > * {
+    &>* {
       margin-inline-end: 65px;
     }
 
@@ -238,7 +245,7 @@
       margin-top: 8px;
     }
 
-    > * {
+    >* {
       padding-inline-start: 10px;
       display: none;
 
